@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomNavBar renders correctly 1`] = `
+<ForwardRef(WithStyles)
+  classes={
+    Object {
+      "root": "makeStyles-root-1",
+    }
+  }
+  showLabels={true}
+  value="/test"
+>
+  <ForwardRef(WithStyles)
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Link",
+        "propTypes": Object {
+          "innerRef": [Function],
+          "onClick": [Function],
+          "replace": [Function],
+          "target": [Function],
+          "to": [Function],
+        },
+        "render": [Function],
+      }
+    }
+    icon={<Memo(LocationCityIcon) />}
+    label="Feed"
+    to="/feed"
+    value="/feed"
+  />
+  <ForwardRef(WithStyles)
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Link",
+        "propTypes": Object {
+          "innerRef": [Function],
+          "onClick": [Function],
+          "replace": [Function],
+          "target": [Function],
+          "to": [Function],
+        },
+        "render": [Function],
+      }
+    }
+    icon={<Memo(GridOnIcon) />}
+    label="Grid"
+    to="/grid"
+    value="/grid"
+  />
+  <ForwardRef(WithStyles)
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Link",
+        "propTypes": Object {
+          "innerRef": [Function],
+          "onClick": [Function],
+          "replace": [Function],
+          "target": [Function],
+          "to": [Function],
+        },
+        "render": [Function],
+      }
+    }
+    icon={<Memo(PersonIcon) />}
+    label="Profile"
+    to="/profile"
+    value="/profile"
+  />
+</ForwardRef(WithStyles)>
+`;
+
+exports[`BottomNavBar renders with router correctly 1`] = `
+<Context.Consumer>
+  [Function]
+</Context.Consumer>
+`;

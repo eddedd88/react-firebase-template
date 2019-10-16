@@ -1,0 +1,145 @@
+{
+  "rcc": {
+    "prefix": "rcc",
+    "description": "React class component",
+    "body": [
+      "import React, { FunctionComponent } from 'react'",
+      "",
+      "const $TM_FILENAME_BASE: FunctionComponent = () => {",
+      "\treturn (",
+      "\t\t<>$0</>",
+      "\t)",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE",
+      ""
+    ]
+  },
+  "exportDefault": {
+    "prefix": "exportDefault",
+    "description": "Export default",
+    "body": [
+      "export { default } from './${TM_DIRECTORY/(.*)\\\///}'",
+      ""
+    ]
+  },
+  "unitTest": {
+    "prefix": "unitTest",
+    "description": "React unit test component",
+    "body": [
+      "import React from 'react'",
+      "import ShallowRenderer from 'react-test-renderer/shallow'",
+      "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}'",
+      "",
+      "describe('${TM_DIRECTORY/(.*)\\\/src//}', () => {",
+      "\tit('renders correctly', () => {",
+      "\t\tconst renderer = ShallowRenderer.createRenderer()",
+      "\t\tconst tree = renderer.render(",
+      "\t\t\t<${TM_FILENAME_BASE/(.*)\\..+$/$1/}$0/>",
+      "\t\t)",
+      "\t\texpect(tree).toMatchSnapshot()",
+      "\t})",
+      "})",
+      ""
+    ]
+  },
+
+  "material-appbar": {
+    "prefix": "material-appbar",
+    "description": "Material UI App Bar",
+    "body": [
+      "import React, { FunctionComponent } from 'react'",
+      "import { AppBar, Toolbar } from '@material-ui/core'",
+      "import AppBarTitle from '@/components/AppBarTitle'",
+      "",
+      "const $TM_FILENAME_BASE: FunctionComponent = () => {",
+      "\treturn (",
+      "\t\t<AppBar position='sticky'>",
+      "\t\t\t<Toolbar>",
+      "\t\t\t\t<AppBarTitle>$0</AppBarTitle>",
+      "\t\t\t</Toolbar>",
+      "\t\t</AppBar>",
+      "\t)",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE",
+      ""
+    ]
+  },
+  "material-styledComponent": {
+    "prefix": "material-styledComponent",
+    "description": "Create a custom component from Material-UI",
+    "body": [
+      "import { withStyles, createStyles, Theme } from '@material-ui/core/styles'",
+      "",
+      "const CustomComponent = withStyles((theme: Theme) =>",
+      "\tcreateStyles({",
+      "\t\troot: {",
+      "\t\t\t$0",
+      "\t\t}",
+      "\t})",
+      ")(Component)",
+      ""
+    ]
+  },
+  "material-menu": {
+    "prefix": "material-menu",
+    "description": "Material UI Menu",
+    "body": [
+      "import React, { FunctionComponent, useRef, useState } from 'react'",
+      "import {",
+      "\tMenu,",
+      "\tMenuItem,",
+      "\tIconButton,",
+      "} from '@material-ui/core'",
+      "import MoreVertIcon from '@material-ui/icons/MoreVert'",
+      "",
+      "const $TM_FILENAME_BASE: FunctionComponent = () => {",
+      "\tconst [openMenu, setOpenMenu] = useState<boolean>(false)",
+      "\tconst menuAnchorEl = useRef(null)",
+      "",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t<IconButton",
+      "\t\t\t\tcolor='inherit'",
+      "\t\t\t\tonClick={() => setOpenMenu(true)}",
+      "\t\t\t\tbuttonRef={menuAnchorEl}",
+      "\t\t\t>",
+      "\t\t\t\t<MoreVertIcon />",
+      "\t\t\t</IconButton>",
+      "",
+      "\t\t\t<Menu",
+      "\t\t\t\topen={openMenu}",
+      "\t\t\t\tanchorEl={menuAnchorEl.current}",
+      "\t\t\t\tonClose={() => setOpenMenu(false)}",
+      "\t\t\t>",
+      "\t\t\t\t<MenuItem>",
+      "\t\t\t\t\t$0",
+      "\t\t\t\t</MenuItem>",
+      "\t\t\t</Menu>",
+      "\t\t</>",
+      "\t)",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE",
+      ""
+    ]
+  },
+  "material-useStyles": {
+    "prefix": "material-useStyles",
+    "description": "Create styles for your component",
+    "body": [
+      "import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'",
+      "",
+      "const useStyles = makeStyles((theme: Theme) =>",
+      "\tcreateStyles({",
+      "\t\t$0",
+      "\t})",
+      ")",
+      "",
+      "// place the following line inside the component",
+      "const classes = useStyles()",
+      ""
+    ]
+  }
+}

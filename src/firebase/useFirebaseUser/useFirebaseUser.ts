@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import firebase from '..'
+import firebase from '../firebase'
 
 const useFirebaseUser = () => {
   const [user, setUser] = useState<firebase.User | null>()

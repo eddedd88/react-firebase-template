@@ -1,9 +1,21 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { AppBar, Box, Container, Toolbar } from '@material-ui/core'
 import AppBarTitle from '../../components/AppBarTitle'
 import BottomNavBar from './BottomNavBar'
+import analytics from '../../firebase/analytics'
+import { useLocation } from 'react-router'
 
 const App: FunctionComponent = () => {
+  const location = useLocation()
+
+  // track screen views in analytics
+  useEffect(() => {
+    analytics.logEvent('screen_view', {
+      app_name: 'Web App',
+      screen_name: location.pathname
+    })
+  }, [location.pathname])
+
   // signin anonymously if necessary
   // useEffect(
   //   () =>

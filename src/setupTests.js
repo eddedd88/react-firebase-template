@@ -6,7 +6,8 @@ jest.mock('firebase/app', () => ({
     enablePersistence: jest.fn()
   })),
   auth: jest.fn(),
-  initializeApp: jest.fn()
+  initializeApp: jest.fn(),
+  analytics: jest.fn()
 }))
 
 jest.mock('firebaseui')

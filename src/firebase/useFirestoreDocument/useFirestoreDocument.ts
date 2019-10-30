@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import FirestoreCollectionPath from '../../models/FirestoreCollectionPath'
-import firestore from '../../firebase/firestore'
+import firestore from '../firestore'
 
 export type FirestoreDocumentResult<T> = {
   loading: boolean

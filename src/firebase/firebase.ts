@@ -1,18 +1,14 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
-const apiKey = process.env.REACT_APP_FIREBASE_API_KEY || ''
-const projectId = process.env.REACT_APP_FIREBASE_PROJECT_ID || ''
+// firebase config for Development
+let firebaseConfig = {}
 
-const config = {
-  apiKey,
-  projectId,
-  authDomain: `${projectId}.firebaseapp.com`,
-  storageBucket: `gs://${projectId}.appspot.com`
-  // messagingSenderId: "<SENDER_ID>",
-  // databaseURL: `https://${projectId}.firebaseio.com`
+// firebase config for Production
+if (process.env.NODE_ENV === 'production') {
+  firebaseConfig = {}
 }
 
-firebase.initializeApp(config)
+firebase.initializeApp(firebaseConfig)
 
 export default firebase

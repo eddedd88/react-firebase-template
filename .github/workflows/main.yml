@@ -33,6 +33,6 @@ jobs:
 
     steps:
       # deploy when pushing to master
-      - if: github.ref == refs/heads/master
+      - if: github.ref == 'refs/heads/master'
         name: echo Deploy
         run: echo ${{ github.ref }}

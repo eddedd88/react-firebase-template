@@ -9,9 +9,12 @@ jobs:
     env:
       CI: true
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v1
+      - name: Setup Node
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
       - run: yarn install
-      - run: yarn ci
+      - run: yarn test
+      - run: yarn build

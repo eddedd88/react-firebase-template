@@ -28,7 +28,6 @@
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --coverage",
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
-    "ci": "yarn test",
     "ci:local": "CI=true yarn ci && CI=true yarn build",
     "deploy": "firebase deploy --token \"$FIREBASE_TOKEN\""
   },

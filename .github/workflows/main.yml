@@ -30,9 +30,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
 
     steps:
-      # deploy when pushing to master
-      - if: github.ref == 'refs/heads/master'
-        name: echo Deploy
+      - name: echo Deploy
         run: echo ${{ github.ref }}

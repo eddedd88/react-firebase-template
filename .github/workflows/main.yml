@@ -27,7 +27,11 @@ jobs:
       - name: Build App
         run: yarn build
 
-    deploy:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
       # deploy when pushing to master
       - name: echo github.ref
         run: echo ${{ github.ref }}

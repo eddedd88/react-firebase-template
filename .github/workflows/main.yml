@@ -1,4 +1,4 @@
-name: CI
+name: CI & CD
 
 on: [push]
 
@@ -13,11 +13,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v1
 
-      # - name: Setup Node
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: '10.x'
-
       - name: Install Dependencies
         run: yarn install
 
@@ -28,6 +23,7 @@ jobs:
         run: yarn build
 
       - name: Archive Production Build
+        if: github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v1
         with:
           name: build
@@ -43,21 +39,18 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v1
 
-      # - name: Setup Node
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: '10.x'
-
       - name: Download Build
         uses: actions/download-artifact@v1
         with:
           name: build
 
-      - name: Configure Deploy to Firebase in /github/workflows/main.yml, line 56
+      - name: Configure Deploy to Firebase in /github/workflows/main.yml, line 47
         run: echo Firebase Deploy
+      # Add FIREBASE_TOKEN as a secret to your github project
+      # Uncomment the following step to deploy to firebase
       # - name: Deploy to Firebase
       #   uses: w9jds/firebase-action@master
       #   with:
-      #     args: deploy --only hosting:prod
+      #     args: deploy
       #   env:
       #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -26,11 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage",
+    "coverage": "react-scripts test --coverage --watchAll=false",
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
-    "ci": "yarn test",
-    "ci:local": "CI=true yarn ci && CI=true yarn build",
-    "deploy": "firebase deploy --token \"$FIREBASE_TOKEN\""
+    "ci:local": "CI=true yarn ci && CI=true yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,7 +48,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.21",
     "@types/react-test-renderer": "^16.9.1",
-    "firebase-tools": "^7.6.2",
     "husky": "^3.0.9",
     "jest-localstorage-mock": "^2.4.0",
     "lint-staged": "^9.4.2",

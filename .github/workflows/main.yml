@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '10.x'
 
-      - name: Cache Dependencies
+      - name: Restore Cache Dependencies
         uses: actions/cache@preview
         with:
           path: ~/.cache/yarn
@@ -33,24 +33,32 @@ jobs:
       - name: Run Tests
         run: yarn test
 
+      # - name: Build App
+      #   run: yarn build
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Restore Cache Dependencies
+        uses: actions/cache@preview
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Build App
         run: yarn build
-
-  # build:
-  #   name: Build
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v1
-
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: '10.x'
-
-  #     - name: Install Dependencies
-  #       run: yarn install
 
   deploy:
     name: Deploy

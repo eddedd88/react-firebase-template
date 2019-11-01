@@ -18,7 +18,16 @@ jobs:
         with:
           node-version: '10.x'
 
+      - name: Cache Dependencies
+        uses: actions/cache@preview
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Run Tests
@@ -27,11 +36,27 @@ jobs:
       - name: Build App
         run: yarn build
 
+  # build:
+  #   name: Build
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout Repo
+  #       uses: actions/checkout@v1
+
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '10.x'
+
+  #     - name: Install Dependencies
+  #       run: yarn install
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
 
     steps:
-      - name: echo Deploy
-        run: echo ${{ github.ref }}
+      - name: Deploy
+        run: echo deploy ${{ github.ref }}

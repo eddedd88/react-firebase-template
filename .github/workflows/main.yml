@@ -53,8 +53,7 @@ jobs:
         with:
           name: build
 
-      - name: Configure Deploy to Firebase in /github/workflows/main.yml
-        if: secrets.FIREBASE_TOKEN != ''
+      - name: Configure Deploy to Firebase in /github/workflows/main.yml, line 56
         run: echo Firebase Deploy
       # - name: Deploy to Firebase
       #   uses: w9jds/firebase-action@master

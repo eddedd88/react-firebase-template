@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import { AppBar, Box, Container, Toolbar } from '@material-ui/core'
+import { AppBar, Box, Container, Toolbar, Typography } from '@material-ui/core'
 import AppBarTitle from '../../components/AppBarTitle'
 import BottomNavBar from './BottomNavBar'
 import analytics from '../../firebase/analytics'
@@ -35,7 +35,13 @@ const App: FunctionComponent = () => {
         </Toolbar>
       </AppBar>
       <Box component={Container} mt={2}>
-        Welcome to the your new app!
+        <Typography paragraph variant='h5'>
+          Welcome to the your new app!
+        </Typography>
+        <Typography paragraph variant='h5'>
+          Don't forget to configure your firebase app at{' '}
+          <code>/src/firebase/firebase.ts</code>
+        </Typography>
       </Box>
       <BottomNavBar />
     </>

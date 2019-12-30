@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import GridIcon from '@material-ui/icons/GridOn'
 import PersonIcon from '@material-ui/icons/Person'
 import LocationCityIcon from '@material-ui/icons/LocationCity'
-import routes from '../../routes'
+import routes from '../routes'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme: Theme) =>

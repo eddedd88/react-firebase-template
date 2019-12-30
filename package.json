@@ -3,23 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.5.2",
+    "@material-ui/core": "^4.8.2",
     "@material-ui/icons": "^4.5.1",
-    "@types/node": "^12.12.1",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.3",
-    "@types/react-router-dom": "^5.1.1",
-    "@types/react-swipeable-views": "^0.13.0",
-    "firebase": "^7.2.2",
-    "firebaseui": "^4.2.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "@types/node": "^13.1.1",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.3",
+    "firebase": "^7.6.1",
+    "firebaseui": "^4.4.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "react-transition-group": "^4.3.0",
+    "react-scripts": "3.3.0",
     "typeface-roboto": "^0.0.75",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^8.0.2",
+    "@types/jest": "^24.0.25",
+    "husky": "^3.1.0",
+    "jest-localstorage-mock": "^2.4.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "source-map-explorer": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +37,7 @@
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --coverage --watchAll=false",
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
-    "ci:local": "CI=true yarn ci && CI=true yarn build"
+    "ci": "CI=true yarn test && CI=true yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,16 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.21",
-    "@types/react-test-renderer": "^16.9.1",
-    "husky": "^3.0.9",
-    "jest-localstorage-mock": "^2.4.0",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2",
-    "react-test-renderer": "^16.11.0",
-    "source-map-explorer": "^2.1.0"
   },
   "jest": {
     "coverageThreshold": {

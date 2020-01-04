@@ -1,5 +1,4 @@
 import firebase from 'firebase/app'
-import 'firebase/firestore'
 
 // firebase config for Development
 let firebaseConfig = {

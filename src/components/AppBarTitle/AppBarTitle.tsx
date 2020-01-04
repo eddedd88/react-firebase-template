@@ -1,19 +1,29 @@
 import React, { FunctionComponent } from 'react'
-import Typography from '@material-ui/core/Typography'
-import withStyles from '@material-ui/core/styles/withStyles'
-import createStyles from '@material-ui/core/styles/createStyles'
+import Typography, { TypographyProps } from '@material-ui/core/Typography'
+import { withStyles, createStyles, Theme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-const CustomTypography = withStyles(
+const CustomTypography = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      marginLeft: 20,
+      marginLeft: theme.spacing(2),
       flex: 'auto'
     }
   })
 )(Typography)
 
-const AppBarTitle: FunctionComponent = props => {
-  return <CustomTypography color='inherit' variant='h6' {...props} />
+const AppBarTitle: FunctionComponent<TypographyProps> = props => {
+  const isMobileScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm')
+  )
+
+  return (
+    <CustomTypography
+      color='inherit'
+      variant={isMobileScreen ? 'h6' : 'h5'}
+      {...props}
+    />
+  )
 }
 
 export default AppBarTitle

@@ -1,4 +1,5 @@
 import firebase from './firebase'
+import 'firebase/firestore'
 import FirestoreCollectionPath from '../models/FirestoreCollectionPath'
 
 // use typed collection paths

@@ -7,14 +7,6 @@ const theme = createMuiTheme({
     // primary: color1,
     // secondary: color2,
     // error: color3
-  },
-  overrides: {
-    MuiToolbar: {
-      gutters: {
-        paddingLeft: 4,
-        paddingRight: 4
-      }
-    }
   }
 })
 

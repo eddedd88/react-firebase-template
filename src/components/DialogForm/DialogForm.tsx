@@ -1,9 +1,8 @@
 import React, { FunctionComponent, FormEvent, ReactNode } from 'react'
 import Dialog, { DialogProps } from '@material-ui/core/Dialog'
-import DialogContent from '@material-ui/core/DialogContent'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import withMobileDialog from '@material-ui/core/withMobileDialog'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import AppBar from '@material-ui/core/AppBar'
@@ -12,6 +11,15 @@ import AppBarTitle from '../AppBarTitle'
 import CloseIcon from '@material-ui/icons/Close'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    form: {
+      display: 'flex',
+      flexDirection: 'column'
+    }
+  })
+)
+
 type Props = {
   title: string
   onSubmit: (e: FormEvent<HTMLFormElement>) => void
@@ -19,25 +27,32 @@ type Props = {
   children: ReactNode
   submitLabel?: string
   cancelLabel?: string
-  appBarButton?: ReactNode
+  appBarSubmitButton?: ReactNode
 } & DialogProps
 
 const DialogForm: FunctionComponent<Props> = props => {
+  const fullScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm')
+  )
   const classes = useStyles()
   const {
-    submitLabel = 'Submit',
+    submitLabel = 'Save',
     cancelLabel = 'Cancel',
     title,
     onSubmit,
     onClose,
     children,
-    appBarButton,
-    fullScreen,
+    appBarSubmitButton,
     ...rest
   } = props
 
   return (
-    <Dialog {...rest} onClose={onClose} fullScreen={fullScreen}>
+    <Dialog
+      {...rest}
+      onClose={onClose}
+      fullScreen={fullScreen}
+      fullWidth={!fullScreen}
+    >
       <form
         onSubmit={onSubmit}
         noValidate
@@ -47,13 +62,13 @@ const DialogForm: FunctionComponent<Props> = props => {
         {fullScreen && (
           <AppBar position='sticky'>
             <Toolbar>
-              <IconButton onClick={onClose} color='inherit'>
+              <IconButton edge='start' onClick={onClose} color='inherit'>
                 <CloseIcon />
               </IconButton>
 
               <AppBarTitle>{title}</AppBarTitle>
 
-              {appBarButton || (
+              {appBarSubmitButton || (
                 <Button color='inherit' type='submit' size='small'>
                   {submitLabel}
                 </Button>
@@ -64,9 +79,7 @@ const DialogForm: FunctionComponent<Props> = props => {
 
         {!fullScreen && <DialogTitle>{title}</DialogTitle>}
 
-        <DialogContent className={classes.dialogContent}>
-          {children}
-        </DialogContent>
+        {children}
 
         {!fullScreen && (
           <DialogActions>
@@ -81,18 +94,4 @@ const DialogForm: FunctionComponent<Props> = props => {
   )
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    dialogContent: {
-      [theme.breakpoints.down('md')]: {
-        marginTop: theme.spacing(3)
-      }
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  })
-)
-
-export default withMobileDialog<Props>()(DialogForm)
+export default DialogForm

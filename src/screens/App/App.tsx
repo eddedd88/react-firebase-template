@@ -1,17 +1,12 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import {
-  AppBar,
-  Box,
-  Container,
-  Toolbar,
-  IconButton,
-  Typography
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
+import analytics from '../../firebase/analytics'
+import { useLocation, Route, Switch, Redirect } from 'react-router'
+import SigninScreen from '../SigninScreen'
+import HomeScreen from '../HomeScreen'
+import routes from '../routes'
+import { AppBar, Toolbar } from '@material-ui/core'
 import AppBarTitle from '../../components/AppBarTitle'
 import BottomNavBar from './BottomNavBar'
-import analytics from '../../firebase/analytics'
-import { useLocation } from 'react-router'
 
 const App: FunctionComponent = () => {
   const location = useLocation()
@@ -39,22 +34,16 @@ const App: FunctionComponent = () => {
     <>
       <AppBar position='sticky'>
         <Toolbar>
-          <IconButton edge='start' color='inherit'>
-            <MenuIcon />
-          </IconButton>
           <AppBarTitle>fullstrapp</AppBarTitle>
         </Toolbar>
       </AppBar>
 
-      <Box component={Container} mt={4}>
-        <Typography paragraph variant='h5'>
-          Welcome to your new app!
-        </Typography>
-        <Typography paragraph variant='h5'>
-          Don't forget to configure your firebase app in{' '}
-          <code>/src/firebase/firebase.ts</code>
-        </Typography>
-      </Box>
+      <Switch>
+        <Route path={routes.signin} component={SigninScreen} />
+        <Route path={routes.home} component={HomeScreen} />
+        <Redirect to={routes.home} />
+      </Switch>
+
       <BottomNavBar />
     </>
   )

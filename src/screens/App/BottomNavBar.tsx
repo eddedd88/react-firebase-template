@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import { Link, useLocation } from 'react-router-dom'
-import GridIcon from '@material-ui/icons/GridOn'
 import PersonIcon from '@material-ui/icons/Person'
 import LocationCityIcon from '@material-ui/icons/LocationCity'
 import routes from '../routes'
@@ -34,24 +33,17 @@ export const BottomNavBar: FunctionComponent = () => {
     <BottomNavigation value={tabValue} classes={classes} showLabels>
       <BottomNavigationAction
         icon={<LocationCityIcon />}
-        label='Feed'
-        value={routes.feed}
+        label='Home'
+        value={routes.home}
         component={Link}
-        to={routes.feed}
-      />
-      <BottomNavigationAction
-        icon={<GridIcon />}
-        label='Grid'
-        value={routes.grid}
-        component={Link}
-        to={routes.grid}
+        to={routes.home}
       />
       <BottomNavigationAction
         icon={<PersonIcon />}
         label='Profile'
-        value={routes.profile}
+        value={routes.signin}
         component={Link}
-        to={routes.profile}
+        to={routes.signin}
       />
     </BottomNavigation>
   )

@@ -2,19 +2,12 @@ import React, { FunctionComponent, useEffect } from 'react'
 import firebase from '../../firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import Typography from '@material-ui/core/Typography'
-import CloseIcon from '@material-ui/icons/Close'
-import IconButton from '@material-ui/core/IconButton'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import AppBarTitle from '../AppBarTitle'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { Box, Typography } from '@material-ui/core'
+import { useTheme } from '@material-ui/core/styles'
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-const Signin: FunctionComponent = () => {
-  const classes = useStyles()
-
+const SigninScreen: FunctionComponent = () => {
   useEffect(() => {
     ui.start('#firebaseui-auth-container', {
       // Firebase UI config options
@@ -48,39 +41,26 @@ const Signin: FunctionComponent = () => {
     })
   }, [])
 
-  return (
-    <>
-      <AppBar position='sticky'>
-        <Toolbar>
-          <IconButton color='inherit'>
-            <CloseIcon />
-          </IconButton>
-          <AppBarTitle>Signin</AppBarTitle>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.wrapper}>
-        <Typography variant='h5' align='center' gutterBottom>
-          fullstrapp
-        </Typography>
+  const theme = useTheme()
 
-        <div id='firebaseui-auth-container' className={classes.signinButtons} />
-      </div>
-    </>
+  return (
+    <Box
+      margin='auto'
+      marginTop={6}
+      padding={2}
+      maxWidth={theme.breakpoints.values.md}
+    >
+      <Typography variant='h5' align='center' gutterBottom>
+        Signin
+      </Typography>
+
+      {/**
+       * firebaseui hooks into the following div to display
+       * the google signin
+       */}
+      <Box id='firebaseui-auth-container' marginTop={4} />
+    </Box>
   )
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    wrapper: {
-      margin: 'auto',
-      marginTop: theme.spacing(6),
-      maxWidth: theme.breakpoints.values.md,
-      padding: theme.spacing(2)
-    },
-    signinButtons: {
-      marginTop: theme.spacing(4)
-    }
-  })
-)
-
-export default Signin
+export default SigninScreen

@@ -3,7 +3,6 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
-
 import 'jest-localstorage-mock'
 
 jest.mock('firebase/app', () => ({
@@ -11,7 +10,10 @@ jest.mock('firebase/app', () => ({
     settings: jest.fn(),
     enablePersistence: jest.fn()
   })),
-  auth: jest.fn(),
+  auth: Object.assign(jest.fn(), {
+    EmailAuthProvider: {},
+    GoogleAuthProvider: {}
+  }),
   initializeApp: jest.fn(),
   analytics: jest.fn(() => ({
     setAnalyticsCollectionEnabled: jest.fn(),

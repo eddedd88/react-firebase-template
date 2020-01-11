@@ -4,7 +4,7 @@ import { Box, Container } from '@material-ui/core'
 const ErrorScreen: FunctionComponent = () => {
   return (
     <Box component={Container} mt={2}>
-      Error Page
+      Something went wrong!
     </Box>
   )
 }

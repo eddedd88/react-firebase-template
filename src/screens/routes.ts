@@ -1,7 +1,6 @@
 const routes = {
-  feed: '/feed',
-  grid: '/grid',
-  profile: '/profile'
+  home: '/',
+  signin: '/signin'
 }
 
 export default routes

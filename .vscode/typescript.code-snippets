@@ -28,17 +28,14 @@
     "description": "React unit test component",
     "body": [
       "import React from 'react'",
-      "import ShallowRenderer from 'react-test-renderer/shallow'",
+      "import { render } from '@testing-library/react'",
       "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}'",
       "",
-      "describe('${TM_DIRECTORY/(.*)\\\/src//}', () => {",
-      "\tit('renders correctly', () => {",
-      "\t\tconst renderer = ShallowRenderer.createRenderer()",
-      "\t\tconst tree = renderer.render(",
+      "test('renders correctly', () => {",
+      "\t\tconst tree = render(",
       "\t\t\t<${TM_FILENAME_BASE/(.*)\\..+$/$1/}$0/>",
       "\t\t)",
-      "\t\texpect(tree).toMatchSnapshot()",
-      "\t})",
+      "\t\texpect(true).toBe(false)",
       "})",
       ""
     ]

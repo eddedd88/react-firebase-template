@@ -1,17 +1,20 @@
 import React, { FunctionComponent, FormEvent, ReactNode } from 'react'
-import Dialog, { DialogProps } from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import AppBarTitle from '../AppBarTitle'
 import CloseIcon from '@material-ui/icons/Close'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import {
+  AppBar,
+  Dialog,
+  DialogProps,
+  DialogActions,
+  DialogTitle,
+  Button,
+  IconButton,
+  Toolbar,
+  useMediaQuery
+} from '@material-ui/core'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     form: {
       display: 'flex',
@@ -63,7 +66,7 @@ const DialogForm: FunctionComponent<Props> = props => {
           <AppBar position='sticky'>
             <Toolbar>
               <IconButton edge='start' onClick={onClose} color='inherit'>
-                <CloseIcon />
+                <CloseIcon titleAccess='Close' />
               </IconButton>
 
               <AppBarTitle>{title}</AppBarTitle>

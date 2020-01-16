@@ -23,7 +23,9 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.2",
+    "@types/css-mediaquery": "^0.1.0",
     "@types/jest": "^24.0.25",
+    "css-mediaquery": "^0.1.2",
     "husky": "^3.1.0",
     "jest-localstorage-mock": "^2.4.0",
     "lint-staged": "^9.5.0",
@@ -33,9 +35,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage --watchAll=false",
+    "coverage": "yarn test --coverage --watchAll=false",
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
     "ci": "CI=true yarn test && CI=true yarn build"
   },

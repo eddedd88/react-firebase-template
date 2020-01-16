@@ -27,7 +27,7 @@ test('renders Home screen by default', () => {
   expect(queryByText('SigninScreen')).toBeNull()
 })
 
-test('navigate to Signing screen and back to Home', () => {
+test('navigate to Signin screen and back to Home', () => {
   const tree = render(<TestComp />)
 
   // navigate to signin screen

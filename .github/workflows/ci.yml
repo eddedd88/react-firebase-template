@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test-and-build:
-    name: Test and build
+    name: Test and Build
     runs-on: ubuntu-latest
     env:
       CI: true

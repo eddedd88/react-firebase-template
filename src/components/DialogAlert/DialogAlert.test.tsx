@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import DialogAlert from './DialogAlert'
 
 test('renders correctly', () => {
@@ -50,9 +50,9 @@ test('cancel and confirm click event', () => {
       open
     />
   )
-  tree.getByText('cancel button').click()
+  fireEvent.click(tree.getByText('cancel button'))
   expect(onCloseMock).toHaveBeenCalledTimes(1)
 
-  tree.getByText('confirm button').click()
+  fireEvent.click(tree.getByText('confirm button'))
   expect(onConfirmMock).toHaveBeenCalledTimes(1)
 })

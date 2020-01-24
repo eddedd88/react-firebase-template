@@ -1,8 +1,9 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import App from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import analytics from '../../firebase/analytics'
 
 jest.mock('../HomeScreen', () => () => 'HomeScreen')
 jest.mock('../SigninScreen', () => () => 'SigninScreen')
@@ -20,23 +21,30 @@ test('renders app title', () => {
   expect(getByText('fullstrapp')).toBeInTheDocument()
 })
 
-test('renders Home screen by default', () => {
-  const { getByText, queryByText } = render(<TestComp />)
-
-  expect(getByText('HomeScreen')).toBeInTheDocument()
-  expect(queryByText('SigninScreen')).toBeNull()
-})
-
-test('navigate to Signin screen and back to Home', () => {
+test('navigate from Home screen to Signin screen and back to Home', () => {
   const tree = render(<TestComp />)
-
-  // navigate to signin screen
-  tree.getByText('Profile').click()
-  expect(tree.getByText('SigninScreen')).toBeInTheDocument()
-  expect(tree.queryByText('HomeScreen')).toBeNull()
-
-  // navigate back to Home sscreen
-  tree.getByText('Home').click()
   expect(tree.getByText('HomeScreen')).toBeInTheDocument()
   expect(tree.queryByText('SigninScreen')).toBeNull()
+  expect(analytics.logEvent).toHaveBeenLastCalledWith(
+    'screen_view',
+    expect.objectContaining({ screen_name: '/' })
+  )
+
+  // navigate to signin screen
+  fireEvent.click(tree.getByText('Profile'))
+  expect(tree.getByText('SigninScreen')).toBeInTheDocument()
+  expect(tree.queryByText('HomeScreen')).toBeNull()
+  expect(analytics.logEvent).toHaveBeenLastCalledWith(
+    'screen_view',
+    expect.objectContaining({ screen_name: '/signin' })
+  )
+
+  // navigate back to Home sscreen
+  fireEvent.click(tree.getByText('Home'))
+  expect(tree.getByText('HomeScreen')).toBeInTheDocument()
+  expect(tree.queryByText('SigninScreen')).toBeNull()
+  expect(analytics.logEvent).toHaveBeenLastCalledWith(
+    'screen_view',
+    expect.objectContaining({ screen_name: '/' })
+  )
 })

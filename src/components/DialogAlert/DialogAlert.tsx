@@ -1,5 +1,4 @@
-import React, { FunctionComponent } from 'react'
-// import Dialog, { DialogProps } from '@material-ui/core/Dialog'
+import React from 'react'
 import {
   Dialog,
   DialogProps,
@@ -19,7 +18,7 @@ type Props = {
   cancelLabel?: string
 } & DialogProps
 
-const DialogAlert: FunctionComponent<Props> = props => {
+const DialogAlert = (props: Props) => {
   const {
     title,
     text,

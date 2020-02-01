@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import Typography, { TypographyProps } from '@material-ui/core/Typography'
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -12,7 +12,7 @@ const CustomTypography = withStyles((theme: Theme) =>
   })
 )(Typography)
 
-const AppBarTitle: FunctionComponent<TypographyProps> = props => {
+const AppBarTitle = (props: TypographyProps) => {
   const isMobileScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm')
   )

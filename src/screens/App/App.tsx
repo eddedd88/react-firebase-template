@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import analytics from '../../firebase/analytics'
 import { useLocation, Route, Switch, Redirect } from 'react-router'
 import SigninScreen from '../SigninScreen'
@@ -8,7 +8,7 @@ import { AppBar, Toolbar } from '@material-ui/core'
 import AppBarTitle from '../../components/AppBarTitle'
 import BottomNavBar from './BottomNavBar'
 
-const App: FunctionComponent = () => {
+const App = () => {
   const location = useLocation()
 
   // track screen views in analytics

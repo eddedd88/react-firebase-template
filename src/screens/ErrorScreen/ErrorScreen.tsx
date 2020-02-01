@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { Box, Container } from '@material-ui/core'
 
-const ErrorScreen: FunctionComponent = () => {
+const ErrorScreen = () => {
   return (
     <Box component={Container} mt={2}>
       Something went wrong!

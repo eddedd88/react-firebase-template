@@ -1,11 +1,11 @@
 {
-  "rcc": {
-    "prefix": "rcc",
+  "rc": {
+    "prefix": "rc",
     "description": "React class component",
     "body": [
-      "import React, { FunctionComponent } from 'react'",
+      "import React from 'react'",
       "",
-      "const $TM_FILENAME_BASE: FunctionComponent = () => {",
+      "const $TM_FILENAME_BASE = () => {",
       "\treturn (",
       "\t\t<>$0</>",
       "\t)",
@@ -23,9 +23,9 @@
       ""
     ]
   },
-  "unitTest": {
-    "prefix": "unitTest",
-    "description": "React unit test component",
+  "trc": {
+    "prefix": "trc",
+    "description": "Test React Component",
     "body": [
       "import React from 'react'",
       "import { render } from '@testing-library/react'",
@@ -41,15 +41,15 @@
     ]
   },
 
-  "material-appbar": {
-    "prefix": "material-appbar",
+  "mui-appbar": {
+    "prefix": "mui-appbar",
     "description": "Material UI App Bar",
     "body": [
-      "import React, { FunctionComponent } from 'react'",
+      "import React from 'react'",
       "import { AppBar, Toolbar } from '@material-ui/core'",
       "import AppBarTitle from '@/components/AppBarTitle'",
       "",
-      "const $TM_FILENAME_BASE: FunctionComponent = () => {",
+      "const $TM_FILENAME_BASE = () => {",
       "\treturn (",
       "\t\t<AppBar position='sticky'>",
       "\t\t\t<Toolbar>",
@@ -63,8 +63,8 @@
       ""
     ]
   },
-  "material-styledComponent": {
-    "prefix": "material-styledComponent",
+  "mui-styledComponent": {
+    "prefix": "mui-styledComponent",
     "description": "Create a custom component from Material-UI",
     "body": [
       "import { withStyles, createStyles, Theme } from '@material-ui/core/styles'",
@@ -79,11 +79,11 @@
       ""
     ]
   },
-  "material-menu": {
-    "prefix": "material-menu",
+  "mui-menu": {
+    "prefix": "mui-menu",
     "description": "Material UI Menu",
     "body": [
-      "import React, { FunctionComponent, useRef, useState } from 'react'",
+      "import React, { useRef, useState } from 'react'",
       "import {",
       "\tMenu,",
       "\tMenuItem,",
@@ -91,7 +91,7 @@
       "} from '@material-ui/core'",
       "import MoreVertIcon from '@material-ui/icons/MoreVert'",
       "",
-      "const $TM_FILENAME_BASE: FunctionComponent = () => {",
+      "const $TM_FILENAME_BASE = () => {",
       "\tconst [openMenu, setOpenMenu] = useState<boolean>(false)",
       "\tconst menuAnchorEl = useRef(null)",
       "",
@@ -122,8 +122,8 @@
       ""
     ]
   },
-  "material-useStyles": {
-    "prefix": "material-useStyles",
+  "mui-useStyles": {
+    "prefix": "mui-useStyles",
     "description": "Create styles for your component",
     "body": [
       "import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'",

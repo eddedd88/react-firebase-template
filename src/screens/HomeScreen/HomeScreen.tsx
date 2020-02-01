@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { Box, Container, Typography } from '@material-ui/core'
 
-const HomeScreen: FunctionComponent = () => {
+const HomeScreen = () => {
   return (
     <Box component={Container} mt={4}>
       <Typography paragraph variant='h5'>

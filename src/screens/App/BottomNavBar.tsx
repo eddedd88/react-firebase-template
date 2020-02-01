@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import { Link, useLocation } from 'react-router-dom'
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export const BottomNavBar: FunctionComponent = () => {
+export const BottomNavBar = () => {
   const classes = useStyles()
   const location = useLocation()
 

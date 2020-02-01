@@ -1,4 +1,4 @@
-import React, { FunctionComponent, FormEvent, ReactNode } from 'react'
+import React, { FormEvent, ReactNode } from 'react'
 import AppBarTitle from '../AppBarTitle'
 import CloseIcon from '@material-ui/icons/Close'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
@@ -33,7 +33,7 @@ type Props = {
   appBarSubmitButton?: ReactNode
 } & DialogProps
 
-const DialogForm: FunctionComponent<Props> = props => {
+const DialogForm = (props: Props) => {
   const fullScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm')
   )

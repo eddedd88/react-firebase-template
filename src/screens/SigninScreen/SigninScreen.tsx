@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import firebase from '../../firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
@@ -7,7 +7,7 @@ import { useTheme } from '@material-ui/core/styles'
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-const SigninScreen: FunctionComponent = () => {
+const SigninScreen = () => {
   useEffect(() => {
     ui.start('#firebaseui-auth-container', {
       // Firebase UI config options

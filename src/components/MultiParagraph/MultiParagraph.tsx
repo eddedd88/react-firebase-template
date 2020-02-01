@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import Typography, { TypographyProps } from '@material-ui/core/Typography'
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   TypographyProps?: TypographyProps
 }
 
-const MultiParagraph: FunctionComponent<Props> = props => {
+const MultiParagraph = (props: Props) => {
   return (
     <>
       {props.text.split('\n').map(

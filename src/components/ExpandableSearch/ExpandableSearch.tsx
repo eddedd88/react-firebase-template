@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ChangeEvent, useState, useRef } from 'react'
+import React, { ChangeEvent, useState, useRef } from 'react'
 import Paper from '@material-ui/core/Paper'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import IconButton from '@material-ui/core/IconButton'
@@ -36,7 +36,7 @@ type Props = {
   onChangeValue: (value: string) => void
 }
 
-const ExpandableSearch: FunctionComponent<Props> = props => {
+const ExpandableSearch = (props: Props) => {
   const [value, setValue] = useState<string>('')
   const [searchModeOn, setSearchModeOn] = useState<boolean>(false)
 

@@ -1,10 +1,10 @@
-import React, { FunctionComponent, HTMLProps, ReactNode } from 'react'
+import React, { HTMLProps, ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
 } & HTMLProps<HTMLInputElement>
 
-const FileInput: FunctionComponent<Props> = props => {
+const FileInput = (props: Props) => {
   const { children, ...rest } = props
 
   return (

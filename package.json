@@ -3,34 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.8.2",
+    "@material-ui/core": "^4.9.0",
     "@material-ui/icons": "^4.5.1",
-    "@types/node": "^13.1.1",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
+    "@types/node": "^13.5.3",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
     "@types/react-router-dom": "^5.1.3",
-    "firebase": "^7.6.1",
+    "firebase": "^7.8.0",
     "firebaseui": "^4.4.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.3.1",
     "typeface-roboto": "^0.0.75",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^8.0.2",
+    "@testing-library/user-event": "^8.1.0",
     "@types/css-mediaquery": "^0.1.0",
-    "@types/jest": "^24.0.25",
+    "@types/jest": "^25.1.1",
     "css-mediaquery": "^0.1.2",
-    "husky": "^3.1.0",
+    "husky": "^4.2.1",
     "jest-localstorage-mock": "^2.4.0",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
-    "source-map-explorer": "^2.1.2"
+    "source-map-explorer": "^2.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -79,8 +79,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write --single-quote --no-semi --jsx-single-quote",
-      "git add"
+      "prettier --write --single-quote --no-semi --jsx-single-quote"
     ]
   }
 }

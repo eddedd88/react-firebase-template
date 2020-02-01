@@ -4,6 +4,9 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-localstorage-mock'
+
+// used by Material-Ui to compute media queries
+// allows you to test your components in different window sizes
 import mediaQuery from 'css-mediaquery'
 
 jest.mock('firebase/app', () => ({

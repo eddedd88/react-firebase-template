@@ -35,15 +35,15 @@ export const BottomNavBar = () => {
         icon={<LocationCityIcon />}
         label='Home'
         value={routes.home}
-        component={Link}
         to={routes.home}
+        component={Link}
       />
       <BottomNavigationAction
         icon={<PersonIcon />}
         label='Profile'
         value={routes.signin}
-        component={Link}
         to={routes.signin}
+        component={Link}
       />
     </BottomNavigation>
   )

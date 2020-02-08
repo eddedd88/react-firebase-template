@@ -4,8 +4,7 @@ import { useLocation, Route, Switch, Redirect } from 'react-router'
 import SigninScreen from '../SigninScreen'
 import HomeScreen from '../HomeScreen'
 import routes from '../routes'
-import { AppBar, Toolbar } from '@material-ui/core'
-import AppBarTitle from '../../components/AppBarTitle'
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import BottomNavBar from './BottomNavBar'
 
 const App = () => {
@@ -34,7 +33,7 @@ const App = () => {
     <>
       <AppBar position='sticky'>
         <Toolbar>
-          <AppBarTitle>fullstrapp</AppBarTitle>
+          <Typography variant='h6'>fullstrapp</Typography>
         </Toolbar>
       </AppBar>
 

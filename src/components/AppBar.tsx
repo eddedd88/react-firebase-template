@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import { Link } from 'react-router-dom'
-// import Logo from './Logo'
+import NightsStayIcon from '@material-ui/icons/NightsStayOutlined'
 
 type Props = {
   title?: string
@@ -40,7 +40,7 @@ const AppBar = (props: Props) => {
             <ArrowBackIcon titleAccess='Navigate Back' />
           </IconButton>
         )}
-        {/* {!props.backTo && <Logo fontSize='large' />} */}
+        {!props.backTo && <NightsStayIcon color='primary' fontSize='large' />}
         <Box ml={3} flex='auto'>
           <Typography variant='h6'>{props.title}</Typography>
         </Box>

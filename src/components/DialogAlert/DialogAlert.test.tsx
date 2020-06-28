@@ -4,7 +4,7 @@ import DialogAlert from './DialogAlert'
 
 test('renders correctly', () => {
   // with default props
-  const tree = render(
+  const view = render(
     <DialogAlert
       text='Dialog Text'
       confirmLabel='Confirm Label'
@@ -15,9 +15,9 @@ test('renders correctly', () => {
       Test Content
     </DialogAlert>
   )
-  expect(tree.getByText('Cancel')).toBeInTheDocument()
+  expect(view.getByText('Cancel')).toBeInTheDocument()
 
-  tree.rerender(
+  view.rerender(
     <DialogAlert
       title='Dialog Alert Title'
       text='Dialog Text'
@@ -30,17 +30,17 @@ test('renders correctly', () => {
       Extra Content
     </DialogAlert>
   )
-  expect(tree.getByText('Dialog Alert Title')).toBeInTheDocument()
-  expect(tree.getByText('Confirm Label')).toBeInTheDocument()
-  expect(tree.getByText('Dialog Text')).toBeInTheDocument()
-  expect(tree.getByText('Cancel Label')).toBeInTheDocument()
-  expect(tree.getByText('Extra Content')).toBeInTheDocument()
+  expect(view.getByText('Dialog Alert Title')).toBeInTheDocument()
+  expect(view.getByText('Confirm Label')).toBeInTheDocument()
+  expect(view.getByText('Dialog Text')).toBeInTheDocument()
+  expect(view.getByText('Cancel Label')).toBeInTheDocument()
+  expect(view.getByText('Extra Content')).toBeInTheDocument()
 })
 
 test('cancel and confirm click event', () => {
   const onCloseMock = jest.fn()
   const onConfirmMock = jest.fn()
-  const tree = render(
+  const view = render(
     <DialogAlert
       text='text'
       confirmLabel='confirm button'
@@ -50,9 +50,9 @@ test('cancel and confirm click event', () => {
       open
     />
   )
-  fireEvent.click(tree.getByText('cancel button'))
+  fireEvent.click(view.getByText('cancel button'))
   expect(onCloseMock).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(tree.getByText('confirm button'))
+  fireEvent.click(view.getByText('confirm button'))
   expect(onConfirmMock).toHaveBeenCalledTimes(1)
 })

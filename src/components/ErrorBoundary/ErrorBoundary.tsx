@@ -2,7 +2,7 @@ import { Component, ReactNode, ErrorInfo } from 'react'
 
 type Props = {
   onError: (error: Error, info: ErrorInfo) => void
-  errorScreen: ReactNode
+  errorComponent: ReactNode
   children: ReactNode
 }
 
@@ -24,10 +24,10 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   render() {
-    const { errorScreen, children } = this.props
+    const { errorComponent, children } = this.props
     const { hasError } = this.state
 
-    return hasError ? errorScreen : children
+    return hasError ? errorComponent : children
   }
 }
 

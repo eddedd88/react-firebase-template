@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test-and-build:
-    name: Test and build
+    name: Test and Build
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -22,13 +22,6 @@ jobs:
       - name: Build App
         run: yarn build
 
-      - name: Archive Production Build
-        if: github.ref == 'refs/heads/master'
-        uses: actions/upload-artifact@v1
-        with:
-          name: build
-          path: build
-
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -39,10 +32,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Download Build
-        uses: actions/download-artifact@v1
-        with:
-          name: build
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build App
+        run: yarn build
 
       - name: Configure Deploy to Firebase in the file /.github/workflows/ci.yml, line 47
         run: echo Firebase Deploy

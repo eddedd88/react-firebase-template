@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './screens/App'
+import App from './pages/App'
 import * as serviceWorker from './serviceWorker'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import addToHomeScreen from './addToHomeScreen'
 import { BrowserRouter } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import ErrorBoundary from './components/ErrorBoundary'
-import ErrorScreen from './screens/ErrorScreen'
+import ErrorPage from './pages/Error'
+import { RecoilRoot } from 'recoil'
 
 // material ui theme
 import theme from './theme'
@@ -22,9 +23,11 @@ ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <BrowserRouter>
-      <ErrorBoundary onError={console.log} errorScreen={<ErrorScreen />}>
-        <App />
-      </ErrorBoundary>
+      <RecoilRoot>
+        <ErrorBoundary onError={console.log} errorComponent={<ErrorPage />}>
+          <App />
+        </ErrorBoundary>
+      </RecoilRoot>
     </BrowserRouter>
   </MuiThemeProvider>,
   document.getElementById('root')

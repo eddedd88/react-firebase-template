@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-localstorage-mock'
+import { mockAuth, mockOnSnapshot } from './test-utils/firebaseMocks'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes
@@ -12,17 +13,21 @@ import mediaQuery from 'css-mediaquery'
 jest.mock('firebase/app', () => ({
   firestore: jest.fn(() => ({
     settings: jest.fn(),
-    enablePersistence: jest.fn()
+    enablePersistence: jest.fn(),
+    collection: jest.fn(() => ({
+      where: jest.fn(() => ({
+        onSnapshot: mockOnSnapshot
+      }))
+    }))
   })),
-  auth: Object.assign(jest.fn(), {
-    EmailAuthProvider: {},
-    GoogleAuthProvider: {}
-  }),
-  initializeApp: jest.fn(),
-  analytics: jest.fn(() => ({
-    setAnalyticsCollectionEnabled: jest.fn(),
-    logEvent: jest.fn()
-  }))
+  auth: Object.assign(
+    jest.fn(() => mockAuth),
+    {
+      EmailAuthProvider: {},
+      GoogleAuthProvider: {}
+    }
+  ),
+  initializeApp: jest.fn()
 }))
 
 jest.mock('firebaseui')

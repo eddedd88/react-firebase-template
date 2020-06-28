@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react'
-import FirestoreCollectionPath from '../../models/FirestoreCollectionPath'
-import firestore from '../firestore'
+import FirestoreCollectionPaths from '../../models/FirestoreCollectionPaths'
+import FirestoreResult from '../../models/FirestoreResult'
+import firestore from '../../firebase/firestore'
 
-export type FirestoreDocumentResult<T> = {
-  loading: boolean
-  data?: T
-  error?: Error
-}
-
-const useFirestoreDocument = <T extends {}>(
-  collectionPath: FirestoreCollectionPath,
+const useFirestoreDocument = <T extends keyof FirestoreCollectionPaths>(
+  collectionPath: T,
   documentId: string
 ) => {
-  const [result, setResult] = useState<FirestoreDocumentResult<T>>({
+  const [result, setResult] = useState<
+    FirestoreResult<FirestoreCollectionPaths[T]>
+  >({
     loading: true
   })
 
@@ -26,13 +23,13 @@ const useFirestoreDocument = <T extends {}>(
             setResult({
               loading: false,
               data: {
-                id: result.id,
-                ...(result.data() as T)
-              }
+                ...(result.data() as FirestoreCollectionPaths[T]),
+                id: result.id
+              },
+              error: undefined
             })
           },
           error => {
-            console.error(error)
             setResult({
               loading: false,
               error

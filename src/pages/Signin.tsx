@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
-import firebase from '../../firebase'
+import firebase from '../firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import { Box, Typography } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
+import AppBar from '../components/AppBar'
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-const SigninScreen = () => {
+const Signin = () => {
   useEffect(() => {
     ui.start('#firebaseui-auth-container', {
       // Firebase UI config options
@@ -44,23 +45,22 @@ const SigninScreen = () => {
   const theme = useTheme()
 
   return (
-    <Box
-      margin='auto'
-      marginTop={6}
-      padding={2}
-      maxWidth={theme.breakpoints.values.md}
-    >
-      <Typography variant='h5' align='center' gutterBottom>
-        Signin
-      </Typography>
-
-      {/**
-       * firebaseui hooks into the following div to display
-       * the google signin
-       */}
-      <Box id='firebaseui-auth-container' marginTop={4} />
-    </Box>
+    <>
+      <AppBar title='Signin' />
+      <Box
+        margin='auto'
+        marginTop={6}
+        padding={2}
+        maxWidth={theme.breakpoints.values.md}
+      >
+        {/**
+         * firebaseui hooks into the following div to display
+         * the google signin
+         */}
+        <Box id='firebaseui-auth-container' marginTop={4} />
+      </Box>
+    </>
   )
 }
 
-export default SigninScreen
+export default Signin

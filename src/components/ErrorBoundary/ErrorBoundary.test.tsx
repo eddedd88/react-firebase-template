@@ -9,25 +9,25 @@ const ThrowError = () => {
 }
 
 test('renders children correctly', () => {
-  const tree = render(
-    <ErrorBoundary onError={jest.fn()} errorScreen={<ErrorComp />}>
+  const view = render(
+    <ErrorBoundary onError={jest.fn()} errorComponent={<ErrorComp />}>
       test content
     </ErrorBoundary>
   )
-  expect(tree.getByText('test content'))
-  expect(tree.queryByText('error component')).toBeNull()
+  expect(view.getByText('test content'))
+  expect(view.queryByText('error component')).toBeNull()
 })
 
 test('error event and render error screen on error', () => {
   const consoleErrorSpy = jest.spyOn(console, 'error')
   consoleErrorSpy.mockImplementation(() => {})
-  const tree = render(
-    <ErrorBoundary onError={jest.fn()} errorScreen={<ErrorComp />}>
+  const view = render(
+    <ErrorBoundary onError={jest.fn()} errorComponent={<ErrorComp />}>
       <ThrowError />
       test content
     </ErrorBoundary>
   )
-  expect(tree.getByText('error component')).toBeInTheDocument()
-  expect(tree.queryByText('test content')).toBeNull()
+  expect(view.getByText('error component')).toBeInTheDocument()
+  expect(view.queryByText('test content')).toBeNull()
   consoleErrorSpy.mockRestore()
 })

@@ -3,8 +3,9 @@ import firebase from '../firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import { Box } from '@material-ui/core'
-import { useTheme } from '@material-ui/core/styles'
 import AppBar from '../components/AppBar'
+import routes from './routes'
+import Wrapper from '../components/Wrapper'
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
@@ -42,23 +43,16 @@ const Signin = () => {
     })
   }, [])
 
-  const theme = useTheme()
-
   return (
     <>
-      <AppBar title='Signin' />
-      <Box
-        margin='auto'
-        marginTop={6}
-        padding={2}
-        maxWidth={theme.breakpoints.values.md}
-      >
+      <AppBar title='Signin' backTo={routes.home} />
+      <Wrapper>
         {/**
          * firebaseui hooks into the following div to display
          * the google signin
          */}
         <Box id='firebaseui-auth-container' marginTop={4} />
-      </Box>
+      </Wrapper>
     </>
   )
 }

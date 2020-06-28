@@ -1,22 +1,7 @@
 import firebase from 'firebase/app'
 
-// firebase config for Development
-let firebaseConfig = {
-  projectId: 'PROJECT_ID',
-  apiKey: 'API_KEY',
-  appId: 'APP_ID',
-  measurementId: 'MEASUREMENT_ID'
-}
-
-// firebase config for Production
-if (process.env.NODE_ENV === 'production') {
-  firebaseConfig = {
-    projectId: 'PROJECT_ID',
-    apiKey: 'API_KEY',
-    appId: 'APP_ID',
-    measurementId: 'MEASUREMENT_ID'
-  }
-}
+// firebase config can be found in your firebase project
+const firebaseConfig = {}
 
 firebase.initializeApp(firebaseConfig)
 

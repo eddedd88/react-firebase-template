@@ -1,18 +1,23 @@
 import firebase from './firebase'
 import 'firebase/firestore'
-import FirestoreCollectionPath from '../models/FirestoreCollectionPath'
+import CustomFirestore from '../models/CustomFirestore'
 
-// use typed collection paths
-interface CustomFirestore extends firebase.firestore.Firestore {
-  collection(
-    collectionPath: FirestoreCollectionPath
-  ): firebase.firestore.CollectionReference
+const firestore = firebase.firestore() as CustomFirestore
+
+if (process.env.NODE_ENV !== 'production') {
+  firestore.settings({
+    host: 'localhost:8080',
+    ssl: false
+  })
 }
 
-const firestore: CustomFirestore = firebase.firestore()
+if (process.env.NODE_ENV === 'production') {
+  // support offline mode
+  firestore.enablePersistence({
+    synchronizeTabs: true
+  })
+}
 
-// support offline mode
-firestore.enablePersistence()
 window.addEventListener('offline', () => firestore.disableNetwork())
 window.addEventListener('online', () => firestore.enableNetwork())
 

@@ -32,7 +32,7 @@
       "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}'",
       "",
       "test('renders correctly', () => {",
-      "\t\tconst tree = render(",
+      "\t\tconst view = render(",
       "\t\t\t<${TM_FILENAME_BASE/(.*)\\..+$/$1/}$0/>",
       "\t\t)",
       "\t\texpect(true).toBe(false)",
@@ -40,50 +40,25 @@
       ""
     ]
   },
-
-  "mui-appbar": {
-    "prefix": "mui-appbar",
-    "description": "Material UI App Bar",
+  "mui-moreOptionsMenu": {
+    "prefix": "mui-moreOptionsMenu",
+    "description": "Material UI More Options Menu",
     "body": [
-      "<AppBar position='sticky'>",
-      "\t<Toolbar>",
-      "\t\t<Typography variant='h6'>$0</Typography>",
-      "\t</Toolbar>",
-      "</AppBar>"
-    ]
-  },
-  "mui-menu": {
-    "prefix": "mui-menu",
-    "description": "Material UI Menu",
-    "body": [
-      "import React, { useEffect, useState } from 'react'",
-      "import {",
-      "\tMenu,",
-      "\tMenuItem,",
-      "\tIconButton,",
-      "} from '@material-ui/core'",
-      "import MoreVertIcon from '@material-ui/icons/MoreVert'",
+      "import React, { useState } from 'react'",
+      "import { MenuItem } from '@material-ui/core'",
+      "import MoreOptionsMenu from '../../components/MoreOptionsMenu'",
       "",
       "const [openMenu, setOpenMenu] = useState<boolean>(false)",
-      "const menuAnchorEl = useRef(null)",
       "",
-      "<IconButton",
-      "\tcolor='inherit'",
-      "\tonClick={() => setOpenMenu(true)}",
-      "\tbuttonRef={menuAnchorEl}",
-      ">",
-      "\t<MoreVertIcon />",
-      "</IconButton>",
-      "",
-      "<Menu",
+      "<MoreOptionsMenu",
       "\topen={openMenu}",
-      "\tanchorEl={menuAnchorEl.current}",
+      "\tonOpen={() => setOpenMenu(true)}",
       "\tonClose={() => setOpenMenu(false)}",
       ">",
-      "\t<MenuItem>",
+      "\t<MenuItem onClick={() => setOpenDeleteDialog(true)}>",
       "\t\t$0",
       "\t</MenuItem>",
-      "</Menu>",
+      "</MoreOptionsMenu>",
       ""
     ]
   },

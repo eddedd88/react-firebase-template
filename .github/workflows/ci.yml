@@ -38,7 +38,7 @@ jobs:
       - name: Build App
         run: yarn build
 
-- name: Configure Deploy to Firebase in the file /.github/workflows/ci.yml, line 47
+      - name: Configure Deploy to Firebase in the file /.github/workflows/ci.yml, line 47
         run: echo Firebase Deploy
       # Add FIREBASE_TOKEN as a secret to your github project,
       #   you can generate a firebase token with the command: yarn firebase login:ci

@@ -3,50 +3,54 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.10.2",
-    "@material-ui/icons": "^4.9.1",
-    "@types/node": "^14.0.14",
-    "@types/react": "^16.9.41",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-router-dom": "^5.1.5",
-    "firebase": "^7.15.5",
-    "firebaseui": "^4.5.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hook-form": "^5.7.2",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@types/node": "^14.14.11",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.6",
+    "firebase": "^8.1.2",
+    "firebaseui": "^4.7.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hook-form": "^6.12.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "recoil": "^0.0.10",
-    "typeface-roboto": "^0.0.75",
-    "typescript": "^3.9.5"
+    "react-scripts": "4.0.1",
+    "recoil": "^0.1.2",
+    "typeface-roboto": "^1.1.13",
+    "typescript": "^4.1.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.0",
-    "@testing-library/react": "^10.4.3",
-    "@testing-library/user-event": "^12.0.11",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
     "@types/css-mediaquery": "^0.1.0",
-    "@types/jest": "^26.0.3",
+    "@types/jest": "^26.0.18",
     "css-mediaquery": "^0.1.2",
-    "firebase-tools": "^8.4.3",
-    "husky": "^4.2.5",
-    "jest-localstorage-mock": "^2.4.2",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
-    "source-map-explorer": "^2.4.2"
+    "firebase-tools": "^8.18.0",
+    "husky": "^4.3.5",
+    "jest-localstorage-mock": "^2.4.3",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "source-map-explorer": "^2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:server": "firebase emulators:start --only firestore",
+    "start:server": "firebase emulators:start --only firestore,auth",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom-fourteen",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "coverage": "yarn test --coverage --watchAll=false",
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
-    "ci": "CI=true yarn test && CI=true yarn build"
+    "ci": "CI=true yarn test && CI=true yarn build",
+    "emulator:export": "yarn firebase emulators:export firestore_mock_data"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -65,7 +69,8 @@
       "src/**/*.{ts,tsx}",
       "!src/**/{index.ts,index.tsx}",
       "!src/react-app-env.d.ts",
-      "!src/serviceWorker.ts"
+      "!src/service-worker.ts",
+      "!src/serviceWorkerRegistration.ts"
     ],
     "coverageThreshold": {
       "global": {

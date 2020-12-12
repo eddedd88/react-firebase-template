@@ -1,4 +1,3 @@
-import React from 'react'
 import Typography, { TypographyProps } from '@material-ui/core/Typography'
 
 type Props = {

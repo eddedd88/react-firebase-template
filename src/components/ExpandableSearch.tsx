@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useRef } from 'react'
+import { ChangeEvent, useState, useRef } from 'react'
 import Paper from '@material-ui/core/Paper'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import IconButton from '@material-ui/core/IconButton'

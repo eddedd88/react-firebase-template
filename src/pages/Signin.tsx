@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import firebase from '../firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
@@ -14,32 +14,10 @@ const Signin = () => {
     ui.start('#firebaseui-auth-container', {
       // Firebase UI config options
       signInSuccessUrl: '/',
-      autoUpgradeAnonymousUsers: true,
       signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
-      ],
-      callbacks: {
-        // gets called when an anonymous user logs in with an existing user
-        // any data that the anonymous user has created will need to be dealt with
-        signInFailure: error => {
-          if (error.code !== 'firebaseui/anonymous-upgrade-merge-conflict') {
-            return Promise.resolve()
-          }
-
-          const anonymousUser = firebase.auth().currentUser
-
-          return firebase
-            .auth()
-            .signInWithCredential(error.credential)
-            .then(() => {
-              if (anonymousUser) {
-                return anonymousUser.delete()
-              }
-            })
-            .then(() => window.location.assign('/'))
-        }
-      }
+      ]
     })
   }, [])
 

@@ -1,3 +1,4 @@
+import firebase from 'firebase'
 import FirestoreCollectionPaths from './FirestoreCollectionPaths'
 
 interface CustomDocumentReference<T>
@@ -13,10 +14,10 @@ interface CustomCollectionReference<T>
   extends firebase.firestore.CollectionReference<T> {
   doc(docId: string): CustomDocumentReference<T>
   add(data: Omit<T, 'id'>): Promise<CustomDocumentReference<T>>
-  where(
-    fieldPath: Extract<keyof T, string>,
+  where<F extends Extract<keyof T, string>>(
+    fieldPath: F,
     opStr: firebase.firestore.WhereFilterOp,
-    value: any
+    value: T[F]
   ): firebase.firestore.Query<T>
 }
 

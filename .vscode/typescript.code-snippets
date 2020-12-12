@@ -3,8 +3,6 @@
     "prefix": "rc",
     "description": "React Component",
     "body": [
-      "import React from 'react'",
-      "",
       "const $TM_FILENAME_BASE = () => {",
       "\treturn (",
       "\t\t<>$0</>",
@@ -27,12 +25,11 @@
     "prefix": "trc",
     "description": "Test React Component",
     "body": [
-      "import React from 'react'",
       "import { render } from '@testing-library/react'",
       "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}'",
       "",
       "test('renders correctly', () => {",
-      "\t\tconst view = render(",
+      "\t\tconst tree = render(",
       "\t\t\t<${TM_FILENAME_BASE/(.*)\\..+$/$1/}$0/>",
       "\t\t)",
       "\t\texpect(true).toBe(false)",
@@ -44,7 +41,7 @@
     "prefix": "mui-moreOptionsMenu",
     "description": "Material UI More Options Menu",
     "body": [
-      "import React, { useState } from 'react'",
+      "import { useState } from 'react'",
       "import { MenuItem } from '@material-ui/core'",
       "import MoreOptionsMenu from '../../components/MoreOptionsMenu'",
       "",

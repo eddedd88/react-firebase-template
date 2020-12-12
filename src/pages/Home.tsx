@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Typography, TextField, Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import routes from './routes'
@@ -32,7 +31,7 @@ const Home = () => {
         </Typography>
 
         <Typography paragraph variant='h5'>
-          Don't forget to configure your firebase app in{' '}
+          Don't forget to configure your firebase settings in{' '}
           <code>/src/firebase/firebase.ts</code>
         </Typography>
 

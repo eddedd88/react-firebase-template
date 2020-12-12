@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Box, Container, ContainerProps } from '@material-ui/core'
 
 type Props = {

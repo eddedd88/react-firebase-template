@@ -1,6 +1,13 @@
-import React from 'react'
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { mockUser } from './firebaseMocks'
+import App from '../pages/App'
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import { BrowserRouter } from 'react-router-dom'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import ErrorBoundary from '../components/ErrorBoundary'
+import Error from '../pages/Error'
+import { RecoilRoot } from 'recoil'
+import theme from '../theme'
 
 type InitialState = {
   user: Parameters<typeof mockUser>[0]
@@ -20,10 +27,18 @@ const renderApp = (initialState?: Partial<InitialState>) => {
 
   mockUser(user)
 
-  render(<div id='root' />)
-  act(() => {
-    require('../index.tsx')
-  })
+  render(
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <RecoilRoot>
+          <ErrorBoundary onError={console.log} errorComponent={<Error />}>
+            <App />
+          </ErrorBoundary>
+        </RecoilRoot>
+      </BrowserRouter>
+    </MuiThemeProvider>
+  )
   return screen
 }
 

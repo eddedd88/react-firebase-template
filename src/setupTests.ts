@@ -2,35 +2,59 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom/extend-expect'
-import 'jest-localstorage-mock'
-import { mockAuth, mockOnSnapshot } from './test-utils/firebaseMocks'
+import '@testing-library/jest-dom'
+import {
+  mockAuth,
+  mockedCollections,
+  clearCollectionMocks
+} from './test-utils/firebaseMocks'
+import FirestoreCollectionPaths from './models/FirestoreCollectionPaths'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes
 import mediaQuery from 'css-mediaquery'
 
+jest.mock('firebaseui')
 jest.mock('firebase/app', () => ({
-  firestore: jest.fn(() => ({
-    settings: jest.fn(),
-    enablePersistence: jest.fn(),
-    collection: jest.fn(() => ({
-      where: jest.fn(() => ({
-        onSnapshot: mockOnSnapshot
-      }))
-    }))
-  })),
-  auth: Object.assign(
-    jest.fn(() => mockAuth),
+  firestore: Object.assign(
+    jest.fn(() => ({
+      useEmulator: jest.fn(),
+      settings: jest.fn(),
+      enablePersistence: jest.fn(),
+      collection: (path: keyof FirestoreCollectionPaths) => {
+        const items = mockedCollections[path] || []
+        const mockedFirebaseCollection = {
+          docs: items.map(item => ({
+            id: item.id,
+            data: () => item
+          }))
+        }
+        return {
+          onSnapshot: (cb: Function) => cb(mockedFirebaseCollection),
+          get: () => Promise.resolve(mockedFirebaseCollection),
+          where: () => ({
+            onSnapshot: (cb: Function) => cb(mockedFirebaseCollection),
+            get: () => Promise.resolve(mockedFirebaseCollection)
+          })
+        }
+      }
+    })),
     {
-      EmailAuthProvider: {},
-      GoogleAuthProvider: {}
+      Timestamp: {
+        now: jest.fn(() => 123)
+      }
     }
   ),
+  auth: Object.assign(() => mockAuth, {
+    EmailAuthProvider: {},
+    GoogleAuthProvider: {}
+  }),
   initializeApp: jest.fn()
 }))
 
-jest.mock('firebaseui')
+afterEach(() => {
+  clearCollectionMocks()
+})
 
 // global function to resize window and to test responsiveness
 window.resizeTo = function resizeTo(width, height) {

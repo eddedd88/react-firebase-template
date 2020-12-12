@@ -5,10 +5,7 @@ import CustomFirestore from '../models/CustomFirestore'
 const firestore = firebase.firestore() as CustomFirestore
 
 if (process.env.NODE_ENV !== 'production') {
-  firestore.settings({
-    host: 'localhost:8080',
-    ssl: false
-  })
+  firestore.useEmulator('localhost', 8080)
 }
 
 if (process.env.NODE_ENV === 'production') {

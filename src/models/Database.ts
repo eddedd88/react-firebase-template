@@ -1,5 +1,5 @@
 namespace Database {
-  export type User = {
+  export type Pet = {
     id: string
     name: string
   }

@@ -36,7 +36,7 @@ Every time a commit is pushed to github, Github will automatically run the CI te
 ## Development
 In two separate terminal windows run the commands: `yarn start:server` and `yarn start`. The Firebase server is run as an emulator locally, which means that it won't use any quota of your Firebase project.
 
-The Firebase instance in this template has been extended with Typescript to type-check a defined database schema. This is hooked up in `src/models/FirestoreCollectionPaths.ts`.
+The Firebase object has been extended with Typescript to enforce a database schema whenever you use *firebase* to access your Database. The schema you define can be hooked up in `src/models/FirestoreCollectionPaths.ts`.
 
 ## Testing
 I recommend following the **react-testing-library** advice of writing tests that closely resemble the way your app is used. This means writing more integration tests where you render the whole app and test actual user functionalities.

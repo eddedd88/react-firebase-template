@@ -46,7 +46,9 @@ jest.mock('firebase/app', () => ({
     }
   ),
   auth: Object.assign(() => mockAuth, {
-    EmailAuthProvider: {},
+    EmailAuthProvider: {
+      credential: () => {}
+    },
     GoogleAuthProvider: {}
   }),
   initializeApp: jest.fn()

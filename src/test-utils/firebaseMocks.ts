@@ -19,7 +19,8 @@ export const clearCollectionMocks = () => {
 
 export const mockAuth = {
   onAuthStateChanged: jest.fn(),
-  useEmulator: () => {}
+  useEmulator: () => {},
+  signInWithCredential: () => {}
 }
 export const mockUser = (firebaseUser: Partial<firebase.User>) => {
   mockAuth.onAuthStateChanged.mockImplementation(cb => {

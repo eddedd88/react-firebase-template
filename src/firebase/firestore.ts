@@ -1,6 +1,6 @@
 import firebase from './firebase'
 import 'firebase/firestore'
-import CustomFirestore from '../models/CustomFirestore'
+import CustomFirestore from '../types/CustomFirestore'
 
 const firestore = firebase.firestore() as CustomFirestore
 

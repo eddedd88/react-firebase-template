@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import FirestoreCollectionPaths from '../../models/FirestoreCollectionPaths'
-import FirestoreResult from '../../models/FirestoreResult'
+import FirestoreCollectionPaths from '../../types/FirestoreCollectionPaths'
+import FirestoreResult from '../../types/FirestoreResult'
 import firestore from '../../firebase/firestore'
 
 const useFirestoreDocument = <T extends keyof FirestoreCollectionPaths>(

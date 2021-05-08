@@ -7,7 +7,7 @@ import {
   mockAuth,
   mockedCollections,
   clearCollectionMocks
-} from './test-utils/firebaseMocks'
+} from './test/utils/firebaseMocks'
 import FirestoreCollectionPaths from './types/FirestoreCollectionPaths'
 
 // used by Material-Ui to compute media queries

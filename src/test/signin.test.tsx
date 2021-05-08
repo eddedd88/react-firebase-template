@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event'
-import renderApp from '../test-utils/renderApp'
+import renderApp from './utils/renderApp'
 
 test('navigate to signin screen', () => {
   const view = renderApp()

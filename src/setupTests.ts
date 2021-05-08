@@ -8,7 +8,7 @@ import {
   mockedCollections,
   clearCollectionMocks
 } from './test/utils/firebaseMocks'
-import FirestoreCollectionPaths from './models/FirestoreCollectionPaths'
+import FirestoreCollectionPaths from './types/FirestoreCollectionPaths'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes

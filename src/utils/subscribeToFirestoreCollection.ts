@@ -1,5 +1,5 @@
 import firebase from '../firebase'
-import FirestoreResult from '../models/FirestoreResult'
+import FirestoreResult from '../types/FirestoreResult'
 
 const subscribeToFirestoreCollection = <T>(
   firestoreQuery: firebase.firestore.Query<T>,

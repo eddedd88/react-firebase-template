@@ -41,10 +41,10 @@ The Firestore object has been extended with Typescript to enforce a database sch
 ## Testing
 I recommend following the **react-testing-library** advice of writing tests that closely resemble the way your app is used. This means writing more integration tests where you render the whole app and test actual user functionalities.
 
-You can find some functions to help with rendering the app and mocking Firestore collections in the `/test-utils` folder. Here is an example of a test:
+You can find some functions to help with rendering the app and mocking Firestore collections in the `/test/utils` folder. Here is an example of a test:
 ```
-import renderApp from '../test-utils/renderApp'
-import { mockCollection } from '../test-utils/firebaseMocks'
+import renderApp from './utils/renderApp'
+import { mockCollection } from './utils/firebaseMocks'
 
 test('display all pets', () => {
   mockCollection('pets', { id: 'test', name: 'Abc' })

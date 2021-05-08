@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import { mockUser } from './firebaseMocks'
-import App from '../pages/App'
+import App from '../../pages/App'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { BrowserRouter } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import ErrorBoundary from '../components/ErrorBoundary'
-import Error from '../pages/Error'
+import ErrorBoundary from '../../components/ErrorBoundary'
+import Error from '../../pages/Error'
 import { RecoilRoot } from 'recoil'
-import theme from '../theme'
+import theme from '../../theme'
 
 type InitialState = {
   user: Parameters<typeof mockUser>[0]

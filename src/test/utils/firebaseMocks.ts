@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import FirestoreCollectionPaths from '../models/FirestoreCollectionPaths'
+import FirestoreCollectionPaths from '../../models/FirestoreCollectionPaths'
 
 export const mockedCollections: {
   [key in keyof FirestoreCollectionPaths]?: Array<FirestoreCollectionPaths[key]>

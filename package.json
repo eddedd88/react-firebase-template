@@ -43,8 +43,7 @@
     "coverage": "yarn test --coverage --watchAll=false",
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
     "ci": "CI=true yarn test && CI=true yarn build",
-    "emulator:export": "yarn firebase emulators:export firestore_mock_data",
-    "prepare": "husky install"
+    "emulator:export": "yarn firebase emulators:export firestore_mock_data"
   },
   "eslintConfig": {
     "extends": [
@@ -84,7 +83,11 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write --single-quote --no-semi --jsx-single-quote --arrow-parens avoid --trailing-comma none"
-    ],
-    "*.{js,css,md}": "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

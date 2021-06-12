@@ -7,7 +7,12 @@ import { useForm } from 'react-hook-form'
 import formErrorMessages from '../utils/formErrorMessages'
 
 const Home = () => {
-  const { register, errors, handleSubmit, reset } = useForm<{ name: string }>()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<{ name: string }>()
 
   return (
     <>
@@ -48,10 +53,9 @@ const Home = () => {
         >
           <TextField
             label='Enter your name'
-            name='name'
             variant='outlined'
             fullWidth
-            inputRef={register({
+            {...register('name', {
               required: formErrorMessages.required
             })}
             error={!!errors.name}

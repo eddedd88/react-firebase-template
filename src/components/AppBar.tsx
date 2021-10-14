@@ -13,7 +13,7 @@ import NightsStayIcon from '@material-ui/icons/NightsStayOutlined'
 
 type Props = {
   title?: string
-  backTo?: string
+  linkBackTo?: string
   actions?: ReactNode
 }
 
@@ -30,17 +30,19 @@ const AppBar = (props: Props) => {
       color='default'
     >
       <Toolbar>
-        {props.backTo && (
+        {props.linkBackTo && (
           <IconButton
             component={Link}
-            to={props.backTo}
+            to={props.linkBackTo}
             color='inherit'
             edge='start'
           >
             <ArrowBackIcon titleAccess='Navigate Back' />
           </IconButton>
         )}
-        {!props.backTo && <NightsStayIcon color='primary' fontSize='large' />}
+        {!props.linkBackTo && (
+          <NightsStayIcon color='primary' fontSize='large' />
+        )}
         <Box ml={3} flex='auto'>
           <Typography variant='h6'>{props.title}</Typography>
         </Box>

@@ -23,7 +23,7 @@ const Signin = () => {
 
   return (
     <>
-      <AppBar title='Signin' backTo={routes.home} />
+      <AppBar title='Signin' linkBackTo={routes.home} />
       <Wrapper>
         {/**
          * firebaseui hooks into the following div to display

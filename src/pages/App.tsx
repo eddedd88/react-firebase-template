@@ -5,7 +5,7 @@ import Home from './Home'
 import routes from './routes'
 import { useSetRecoilState } from 'recoil'
 import { sessionState } from '../state'
-import firebase from '../firebase'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const App = () => {
   const setSession = useSetRecoilState(sessionState)
@@ -13,7 +13,7 @@ const App = () => {
   // Subscribe to firebase auth
   useEffect(
     () =>
-      firebase.auth().onAuthStateChanged(resultUser => {
+      onAuthStateChanged(getAuth(), resultUser => {
         setSession({
           isAuthenticating: false,
           user: resultUser && {

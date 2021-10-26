@@ -37,7 +37,7 @@ const Home = () => {
 
         <Typography paragraph variant='h5'>
           Don't forget to configure your firebase settings in{' '}
-          <code>/src/firebase/firebase.ts</code>
+          <code>/src/initFirebase.ts</code>
         </Typography>
 
         <Box mt={6}>

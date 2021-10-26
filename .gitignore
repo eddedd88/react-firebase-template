@@ -11,6 +11,9 @@
 # production
 /build
 
+# emulator data
+firestore_mock_data
+
 # misc
 .DS_Store
 .env.local

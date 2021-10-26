@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import ErrorBoundary from './components/ErrorBoundary'
 import Error from './pages/Error'
 import { RecoilRoot } from 'recoil'
+import initFirebase from './initFirebase'
 
 // material ui theme
 import theme from './theme'
@@ -16,6 +17,8 @@ import 'typeface-roboto'
 
 // some global css
 import './index.css'
+
+initFirebase()
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>

@@ -25,11 +25,11 @@
     ]
   },
   "firestore": {
-    "rules": "firebaseConfig/firestore.rules",
-    "indexes": "firebaseConfig/firestore.indexes.json"
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   },
   "storage": {
-    "rules": "firebaseConfig/storage.rules"
+    "rules": "storage.rules"
   },
   "emulators": {
     "firestore": {

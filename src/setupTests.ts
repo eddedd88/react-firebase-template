@@ -4,55 +4,22 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
 import {
-  mockAuth,
-  mockedCollections,
+  mockOnAuthStateChanged,
   clearCollectionMocks
 } from './test/utils/firebaseMocks'
-import FirestoreCollectionPaths from './types/FirestoreCollectionPaths'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes
 import mediaQuery from 'css-mediaquery'
 
-jest.mock('firebaseui')
-jest.mock('firebase/app', () => ({
-  firestore: Object.assign(
-    jest.fn(() => ({
-      useEmulator: jest.fn(),
-      settings: jest.fn(),
-      enablePersistence: jest.fn(),
-      collection: (path: keyof FirestoreCollectionPaths) => {
-        const items = mockedCollections[path] || []
-        const mockedFirebaseCollection = {
-          docs: items.map(item => ({
-            id: item.id,
-            data: () => item
-          }))
-        }
-        return {
-          onSnapshot: (cb: Function) => cb(mockedFirebaseCollection),
-          get: () => Promise.resolve(mockedFirebaseCollection),
-          where: () => ({
-            onSnapshot: (cb: Function) => cb(mockedFirebaseCollection),
-            get: () => Promise.resolve(mockedFirebaseCollection)
-          })
-        }
-      }
-    })),
-    {
-      Timestamp: {
-        now: jest.fn(() => 123)
-      }
-    }
-  ),
-  auth: Object.assign(() => mockAuth, {
-    EmailAuthProvider: {
-      credential: () => {}
-    },
-    GoogleAuthProvider: {}
-  }),
-  initializeApp: jest.fn()
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  onAuthStateChanged: mockOnAuthStateChanged
 }))
+
+// jest.mock('firebase/app', () => ({
+//   initializeApp: jest.fn()
+// }))
 
 afterEach(() => {
   clearCollectionMocks()

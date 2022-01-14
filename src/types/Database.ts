@@ -1,8 +1,9 @@
 namespace Database {
-  export type Pet = {
+  export type Todo = {
     id: string
-    name: string
-    age: number
+    description: string
+    order: number
+    completed: boolean
   }
 }
 

@@ -5,6 +5,8 @@ import Wrapper from '../components/Wrapper'
 import AppBar from '../components/AppBar'
 import { useForm } from 'react-hook-form'
 import formErrorMessages from '../utils/formErrorMessages'
+import { useState } from 'react'
+import Database from '../types/Database'
 
 const Home = () => {
   const {
@@ -13,6 +15,8 @@ const Home = () => {
     reset,
     formState: { errors }
   } = useForm<{ name: string }>()
+
+  const [todos, setTodos] = useState<Database.Todo[]>([])
 
   return (
     <>
@@ -41,13 +45,24 @@ const Home = () => {
         </Typography>
 
         <Box mt={6}>
-          <Typography paragraph>
-            This is an example form using react-hook-form
-          </Typography>
+          <Typography paragraph>TODO List</Typography>
+          <ul>
+            {todos.map(todo => (
+              <li>{todo.description}</li>
+            ))}
+          </ul>
         </Box>
         <form
           onSubmit={handleSubmit(vals => {
-            console.log(vals)
+            setTodos([
+              ...todos,
+              {
+                id: vals.name,
+                description: vals.name,
+                order: todos.length,
+                completed: false
+              }
+            ])
             reset()
           })}
         >

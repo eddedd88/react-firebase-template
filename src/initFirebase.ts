@@ -25,7 +25,7 @@ const initFirebase = async () => {
       connectFirestoreEmulator(firestore, 'localhost', 8080)
       enableMultiTabIndexedDbPersistence(firestore)
       /**
-       * The following lines login the user automatically to speed up development.
+       * The following code logins the user automatically to speed up development.
        * For this to work you first need to create a user and then run the command
        * yarn emulator:export, then import the data when starting the emulator
        * yarn firebase emulators:start --only firestore,auth --import=firestore_mock_data
@@ -40,7 +40,5 @@ const initFirebase = async () => {
     return err
   }
 }
-
-// const firestore = firebase.firestore() as CustomFirestore
 
 export default initFirebase

@@ -1,7 +1,7 @@
 import Database from './Database'
 
 type FirestoreCollectionPaths = {
-  pets: Database.Pet
+  todos: Database.Todo
 }
 
 export default FirestoreCollectionPaths

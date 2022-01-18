@@ -6,7 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText
-} from '@material-ui/core'
+} from '@mui/material'
 
 type Props = {
   text: string

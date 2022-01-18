@@ -6,10 +6,10 @@ import {
   Typography,
   IconButton,
   useScrollTrigger
-} from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+} from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { Link } from 'react-router-dom'
-import NightsStayIcon from '@material-ui/icons/NightsStayOutlined'
+import NightsStayIcon from '@mui/icons-material/NightsStayOutlined'
 
 type Props = {
   title?: string

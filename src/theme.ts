@@ -1,16 +1,18 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
-import grey from '@material-ui/core/colors/grey'
+import createTheme from '@mui/material/styles/createTheme'
+import { grey } from '@mui/material/colors'
 
-// https://material-ui.com/customization/themes/#themes
+// https://mui.com/customization/theming/#themes
 
-const theme = createMuiTheme({
-  palette: {
-    // primary: primaryColor
-  },
-  overrides: {
+const theme = createTheme({
+  // palette: {
+  //   primary: primaryColor
+  // }
+  components: {
     MuiAppBar: {
-      colorDefault: {
-        backgroundColor: grey[50]
+      styleOverrides: {
+        colorDefault: {
+          backgroundColor: grey[50]
+        }
       }
     }
   }

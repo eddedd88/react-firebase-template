@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import App from '../../pages/App'
-import { MuiThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { BrowserRouter } from 'react-router-dom'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import CssBaseline from '@mui/material/CssBaseline'
 import ErrorBoundary from '../../components/ErrorBoundary'
 import Error from '../../pages/Error'
 import { RecoilRoot, UnwrapRecoilValue } from 'recoil'
@@ -31,7 +31,7 @@ const renderApp = (initialState?: Partial<InitialState>) => {
   }
 
   render(
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
         <RecoilRoot initializeState={() => state}>
@@ -40,7 +40,7 @@ const renderApp = (initialState?: Partial<InitialState>) => {
           </ErrorBoundary>
         </RecoilRoot>
       </BrowserRouter>
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 
   return screen

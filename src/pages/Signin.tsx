@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Typography } from '@mui/material'
 import AppBar from '../components/AppBar'
 import routes from './routes'
 import Wrapper from '../components/Wrapper'

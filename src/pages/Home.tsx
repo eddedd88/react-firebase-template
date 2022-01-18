@@ -1,4 +1,4 @@
-import { Box, Typography, TextField, Button } from '@material-ui/core'
+import { Box, Typography, TextField, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import routes from './routes'
 import Wrapper from '../components/Wrapper'

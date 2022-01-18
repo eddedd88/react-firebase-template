@@ -42,7 +42,7 @@
     "description": "Material UI More Options Menu",
     "body": [
       "import { useState } from 'react'",
-      "import { MenuItem } from '@material-ui/core'",
+      "import { MenuItem } from '@mui/material'",
       "import MoreOptionsMenu from '../../components/MoreOptionsMenu'",
       "",
       "const [openMenu, setOpenMenu] = useState<boolean>(false)",
@@ -63,7 +63,7 @@
     "prefix": "mui-styledComponent",
     "description": "Create a custom component from Material-UI",
     "body": [
-      "import { withStyles, createStyles, Theme } from '@material-ui/core/styles'",
+      "import { withStyles, createStyles, Theme } from '@mui/material/styles'",
       "",
       "const CustomComponent = withStyles((theme: Theme) =>",
       "\tcreateStyles({",
@@ -79,7 +79,7 @@
     "prefix": "mui-useStyles",
     "description": "Create styles for your component",
     "body": [
-      "import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'",
+      "import { makeStyles, createStyles, Theme } from '@mui/material/styles'",
       "",
       "const useStyles = makeStyles((theme: Theme) =>",
       "\tcreateStyles({",

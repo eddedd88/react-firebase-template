@@ -1,4 +1,4 @@
-import { useMediaQuery, Theme } from '@material-ui/core'
+import { useMediaQuery, Theme } from '@mui/material'
 
 const useSmallScreen = () => {
   return useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'), {

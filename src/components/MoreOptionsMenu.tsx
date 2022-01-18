@@ -1,6 +1,6 @@
 import { useRef, ReactNode } from 'react'
-import { Menu, IconButton } from '@material-ui/core'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
+import { Menu, IconButton } from '@mui/material'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
 
 type Props = {
   children: ReactNode
@@ -17,7 +17,7 @@ const MoreOptionsMenu = (props: Props) => {
       <IconButton
         color='inherit'
         onClick={props.onOpen}
-        buttonRef={menuAnchorEl}
+        ref={menuAnchorEl}
         edge='end'
       >
         <MoreVertIcon color='inherit' />

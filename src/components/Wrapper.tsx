@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
-import { Box, Container, ContainerProps } from '@material-ui/core'
+import { Box, Container, ContainerProps } from '@mui/material'
 
 type Props = {
   children: ReactNode
   marginTop?: number
   marginBottom?: number
-} & Pick<ContainerProps, 'maxWidth'>
+} & Partial<Pick<ContainerProps, 'maxWidth'>>
 
 const Wrapper = ({
   children,

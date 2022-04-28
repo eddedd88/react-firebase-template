@@ -16,9 +16,9 @@ const firebaseConfig = {}
 
 const initFirebase = async () => {
   try {
-    initializeApp(firebaseConfig)
-    const firestore = getFirestore()
-    const auth = getAuth()
+    const app = initializeApp(firebaseConfig)
+    const firestore = getFirestore(app)
+    const auth = getAuth(app)
 
     if (process.env.NODE_ENV !== 'production') {
       connectAuthEmulator(auth, 'http://localhost:9099')

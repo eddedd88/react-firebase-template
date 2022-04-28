@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import { mockOnAuthStateChanged } from './test/utils/mockUser'
+import { mockOnAuthStateChanged } from './tests/utils/mockUser'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes

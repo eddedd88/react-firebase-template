@@ -42,8 +42,7 @@ const renderApp = (initialState?: Partial<InitialState>) => {
       </BrowserRouter>
     </ThemeProvider>
   )
-
-  return screen
 }
 
+export { screen }
 export default renderApp

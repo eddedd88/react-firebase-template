@@ -9,11 +9,16 @@ import {
   where,
   getDocs,
   getDoc,
-  doc
+  doc,
+  addDoc,
+  Timestamp,
+  FieldValue,
+  updateDoc,
+  deleteDoc
 } from 'firebase/firestore'
 import FirestoreCollectionPaths from '../types/FirestoreCollectionPaths'
 
-export const getById = async <T extends keyof FirestoreCollectionPaths>(
+const getById = async <T extends keyof FirestoreCollectionPaths>(
   collectionPath: T,
   recordId: string
 ) => {
@@ -34,7 +39,8 @@ type WhereClause<T extends keyof FirestoreCollectionPaths> = [
   any
 ]
 type OrderByClause<T> = [Extract<T, string>, OrderByDirection?]
-export async function runQuery<T extends keyof FirestoreCollectionPaths>({
+
+async function runQuery<T extends keyof FirestoreCollectionPaths>({
   collection: collectionPath,
   where: whereClause = [],
   orderBy: orderByClause,
@@ -75,5 +81,49 @@ function isNotUndefined<T>(val: T | undefined): val is T {
 function isSingleWhereClause(
   whereClause: WhereClause<any> | WhereClause<any>[]
 ): whereClause is WhereClause<any> {
-  return whereClause.length === 1 && Array.isArray(whereClause[0])
+  return whereClause.length > 0 && !Array.isArray(whereClause[0])
 }
+
+// server timestamps must be Firestore Fieldvalues
+type TimestampToFieldValue<T> = {
+  [K in keyof T]: T[K] extends Timestamp ? FieldValue : T[K]
+}
+
+const addItem = async <T extends keyof FirestoreCollectionPaths>(
+  collectionPath: T,
+  item: TimestampToFieldValue<Omit<FirestoreCollectionPaths[T], 'id'>>
+) => {
+  const firestore = getFirestore()
+  const result = await addDoc(collection(firestore, collectionPath), item)
+
+  return result // as FirestoreCollectionPaths[T]
+}
+
+const updateItem = async <T extends keyof FirestoreCollectionPaths>(
+  collectionPath: T,
+  itemId: string,
+  item: Partial<TimestampToFieldValue<Omit<FirestoreCollectionPaths[T], 'id'>>>
+) => {
+  const firestore = getFirestore()
+  const result = await updateDoc(doc(firestore, collectionPath, itemId), item)
+
+  return result // as FirestoreCollectionPaths[T]
+}
+
+const deleteItem = async <T extends keyof FirestoreCollectionPaths>(
+  collectionPath: T,
+  itemId: string
+) => {
+  const firestore = getFirestore()
+  return await deleteDoc(doc(firestore, collectionPath, itemId))
+}
+
+const db = {
+  getById,
+  runQuery,
+  addItem,
+  updateItem,
+  deleteItem
+}
+
+export default db

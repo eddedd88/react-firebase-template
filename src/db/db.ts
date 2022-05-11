@@ -105,9 +105,7 @@ const updateItem = async <T extends keyof FirestoreCollectionPaths>(
   item: Partial<TimestampToFieldValue<Omit<FirestoreCollectionPaths[T], 'id'>>>
 ) => {
   const firestore = getFirestore()
-  const result = await updateDoc(doc(firestore, collectionPath, itemId), item)
-
-  return result // as FirestoreCollectionPaths[T]
+  return await updateDoc(doc(firestore, collectionPath, itemId), item)
 }
 
 const deleteItem = async <T extends keyof FirestoreCollectionPaths>(

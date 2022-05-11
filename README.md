@@ -29,7 +29,7 @@ After starting your repo with this template you need to configure your Firebase 
 CI tests are configured out of the box, but to enable deploys to Firebase do the following:
 - Create a Firebase Auth Token locally: `yarn firebase login:ci`
 - Add the Firebase token to Github as a *secret* called `FIREBASE_TOKEN`. You can add secrets at *Github Project > Settings > Secrets*.
-- Open the file `.github/workflows/ci.yml` and uncomment the lines `46-51` 
+- Open the file `.github/workflows/ci.yml` and uncomment the lines `25-30` 
 
 Every time a commit is pushed to github, Github will automatically run the CI tests; and every time there is a push to master, Github will deploy the new version to Firebase. See the ci workflow in `.github/workflows/ci.yml` for more details.
 

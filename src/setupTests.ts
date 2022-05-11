@@ -3,27 +3,20 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import { mockOnAuthStateChanged } from './tests/utils/mockUser'
+import './tests/utils/mockFirestore'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes
 import mediaQuery from 'css-mediaquery'
+import { clearCollectionMocks } from './tests/utils/mockDB'
 
 jest.mock('firebase/app')
-jest.mock('firebase/firestore', () => ({
-  query: jest.fn(),
-  collection: jest.fn(),
-  limit: jest.fn(),
-  getFirestore: jest.fn(),
-  getDocs: () =>
-    Promise.resolve({
-      docs: []
-    })
-}))
-jest.mock('firebase/auth', () => ({
-  getAuth: jest.fn(),
-  onAuthStateChanged: mockOnAuthStateChanged
-}))
+jest.mock('firebase/auth')
+// jest.mock('firebaseui')
+
+afterEach(() => {
+  clearCollectionMocks()
+})
 
 // global function to resize window and to test responsiveness
 window.resizeTo = function resizeTo(width, height) {

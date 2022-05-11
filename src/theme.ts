@@ -1,4 +1,4 @@
-import createTheme from '@mui/material/styles/createTheme'
+import { createTheme } from '@mui/material/styles'
 import { grey } from '@mui/material/colors'
 
 // https://mui.com/customization/theming/#themes

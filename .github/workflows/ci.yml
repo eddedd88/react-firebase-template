@@ -1,14 +1,14 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  test-and-build:
-    name: Test and Build
+  test-build-and-deploy:
+    name: Test, Build, and Deploy
     runs-on: ubuntu-latest
-    env:
-      CI: true
-
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -22,27 +22,6 @@ jobs:
       - name: Build App
         run: yarn build
 
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: test-and-build
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: yarn install
-
-      - name: Build App
-        run: yarn build
-
-      - name: Configure Deploy to Firebase in the file /.github/workflows/ci.yml, line 47
-        run: echo Firebase Deploy
-      # Add FIREBASE_TOKEN as a secret to your github project,
-      #   you can generate a firebase token with the command: yarn firebase login:ci
-      # Uncomment the following step to deploy to firebase
       # - name: Deploy to Firebase
       #   uses: w9jds/firebase-action@master
       #   with:

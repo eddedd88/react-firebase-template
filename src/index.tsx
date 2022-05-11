@@ -7,7 +7,7 @@ import { CssBaseline } from '@mui/material'
 import ErrorBoundary from './components/ErrorBoundary'
 import Error from './pages/Error'
 import { RecoilRoot } from 'recoil'
-import initFirebase from './initFirebase'
+import initFirebase from './db/initFirebase'
 
 // material ui theme
 import theme from './theme'

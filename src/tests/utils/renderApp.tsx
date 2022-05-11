@@ -5,36 +5,29 @@ import { BrowserRouter } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline'
 import ErrorBoundary from '../../components/ErrorBoundary'
 import Error from '../../pages/Error'
-import { RecoilRoot, UnwrapRecoilValue } from 'recoil'
+import { MutableSnapshot, RecoilRoot, UnwrapRecoilValue } from 'recoil'
 import theme from '../../theme'
 import { sessionState } from '../../state'
 
-type InitialState = {
-  session: UnwrapRecoilValue<typeof sessionState>
-}
-
-const defaultInitialState: InitialState = {
-  session: {
-    isAuthenticating: false,
-    user: {
-      uid: 'user123',
-      displayName: 'John Doe',
-      email: 'john@doe.com'
-    }
+const defaultSession: UnwrapRecoilValue<typeof sessionState> = {
+  isAuthenticating: false,
+  user: {
+    uid: 'user123',
+    displayName: 'John Doe',
+    email: 'john@doe.com'
   }
 }
 
-const renderApp = (initialState?: Partial<InitialState>) => {
-  const state = {
-    ...defaultInitialState,
-    ...initialState
+const renderApp = (session?: typeof defaultSession) => {
+  function initializeState({ set }: MutableSnapshot) {
+    set(sessionState, session || defaultSession)
   }
 
-  render(
+  return render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <RecoilRoot initializeState={() => state}>
+        <RecoilRoot initializeState={initializeState}>
           <ErrorBoundary onError={console.log} errorComponent={<Error />}>
             <App />
           </ErrorBoundary>

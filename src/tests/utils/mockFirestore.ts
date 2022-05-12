@@ -6,7 +6,7 @@ type MockDoc = {
   docId: string
 }
 
-jest.mock('firebase/firestore', () => ({
+const mockFirestore = {
   query: (tableName: string) => tableName,
   collection: (_: any, tableName: string) => tableName,
   doc: (_: any, tableName: string, docId: string) => ({
@@ -49,4 +49,6 @@ jest.mock('firebase/firestore', () => ({
   Timestamp: {
     now: jest.fn(() => 123)
   }
-}))
+}
+
+export default mockFirestore

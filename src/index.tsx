@@ -1,9 +1,9 @@
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import App from './pages/App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import { ThemeProvider } from '@mui/material/styles'
 import { BrowserRouter } from 'react-router-dom'
-import { CssBaseline } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
 import ErrorBoundary from './components/ErrorBoundary'
 import Error from './pages/Error'
 import { RecoilRoot } from 'recoil'
@@ -20,7 +20,9 @@ import './index.css'
 
 initFirebase()
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!)
+
+root.render(
   <ThemeProvider theme={theme}>
     <CssBaseline />
     <BrowserRouter>
@@ -30,8 +32,7 @@ ReactDOM.render(
         </ErrorBoundary>
       </RecoilRoot>
     </BrowserRouter>
-  </ThemeProvider>,
-  document.getElementById('root')
+  </ThemeProvider>
 )
 
 serviceWorkerRegistration.register()

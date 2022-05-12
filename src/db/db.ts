@@ -3,7 +3,7 @@ import {
   getFirestore,
   WhereFilterOp,
   OrderByDirection,
-  query,
+  query as firestoreQuery,
   limit,
   orderBy,
   where,
@@ -40,7 +40,7 @@ type WhereClause<T extends keyof FirestoreCollectionPaths> = [
 ]
 type OrderByClause<T> = [Extract<T, string>, OrderByDirection?]
 
-async function runQuery<T extends keyof FirestoreCollectionPaths>({
+async function query<T extends keyof FirestoreCollectionPaths>({
   collection: collectionPath,
   where: whereClause = [],
   orderBy: orderByClause,
@@ -61,7 +61,7 @@ async function runQuery<T extends keyof FirestoreCollectionPaths>({
     orderByClause ? orderBy(...orderByClause) : undefined
   ].filter(isNotUndefined)
 
-  const q = query<any>(
+  const q = firestoreQuery<any>(
     collection(db, collectionPath),
     ...optionalQueryOptions,
     limit(limitClause)
@@ -118,7 +118,7 @@ const deleteItem = async <T extends keyof FirestoreCollectionPaths>(
 
 const db = {
   getById,
-  runQuery,
+  query,
   addItem,
   updateItem,
   deleteItem

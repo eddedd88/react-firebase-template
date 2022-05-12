@@ -4,8 +4,9 @@ This template tries to make as many opinionated choices as possible about the de
 
 For this template to work all you will need is a Firebase project. I recommend using their free tier to start off.
 
-## Tech Stack Choices:
-- **[create-react-app](https://github.com/facebook/create-react-app)** as the project's starting point, using the *cra-template-pwa-typescript* template, this includes:
+## Tech Stack:
+
+- **[create-react-app](https://github.com/facebook/create-react-app)** as the project's starting point, using the _cra-template-pwa-typescript_ template, this includes:
   - **React**
   - **Typescript**
   - cra's bundling capabilities
@@ -19,29 +20,36 @@ For this template to work all you will need is a Firebase project. I recommend u
 - **[react-testing-library](https://testing-library.com/docs/react-testing-library/intro)** for writing tests
 
 ## Getting Started
+
 After starting your repo with this template you need to configure your Firebase project:
+
 - Make sure you have enabled all the **Firebase** services you wish to use in your project
-- Copy your firebase config located at *Firebase Project > Project Settings > Firebase SDK snippet > Config*
-- Paste the firebase config to `src/firebase/firebase.ts` for the respective environment
-- Set your *Firebase Project* as *default* at `.firebaserc`
+- Copy your firebase config located at _Firebase Project > Project Settings > Firebase SDK snippet > Config_
+- Paste the firebase config to `src/db/initFirebase.ts` for the respective environment
+- Set your _Firebase Project_ as _default_ at `.firebaserc`
 
 ### Automate Deploys to Firebase hosting
-CI tests are configured out of the box, but to enable deploys to Firebase do the following:
-- Create a Firebase Auth Token locally: `yarn firebase login:ci`
-- Add the Firebase token to Github as a *secret* called `FIREBASE_TOKEN`. You can add secrets at *Github Project > Settings > Secrets*.
-- Open the file `.github/workflows/ci.yml` and uncomment the lines `25-30` 
 
-Every time a commit is pushed to github, Github will automatically run the CI tests; and every time there is a push to master, Github will deploy the new version to Firebase. See the ci workflow in `.github/workflows/ci.yml` for more details.
+CI tests are configured out of the box, but to enable deploys to Firebase do the following:
+
+- Create a Firebase Auth Token locally: `yarn firebase login:ci`
+- Add the Firebase token to Github as a _secret_ called `FIREBASE_TOKEN`. You can add secrets at _Github Project > Settings > Secrets_.
+- Open the file `.github/workflows/ci.yml` and uncomment the lines `25-30`
+
+Every time a commit is pushed to github, Github will automatically run the CI tests, build the app and deploy the new version to Firebase. See the ci workflow in `.github/workflows/ci.yml` for more details.
 
 ## Development
-In two separate terminal windows run the commands: `yarn start:server` and `yarn start`. The Firebase server is run as an emulator locally, which means that it won't use any quota of your Firebase project.
 
-The Firestore object has been extended with Typescript to enforce a database schema whenever you use *firebase* to access your Database, you can define it in `src/types/Database.ts`. You can then match the names of your Firestore Collections to your schema in `src/types/FirestoreCollectionPaths.ts`.
+Run the commands: `yarn start`. The Firebase server is run as an emulator locally, which means that it won't use any quota of your Firebase project.
+
+The Firestore object has been extended with Typescript to enforce a database schema whenever you use _firebase_ to access your Database, you can define it in `src/types/Database.ts`. You can then match the names of your Firestore Collections to your schema in `src/types/FirestoreCollectionPaths.ts`.
 
 ## Testing
+
 I recommend following the **react-testing-library** advice of writing tests that closely resemble the way your app is used. This means writing more integration tests where you render the whole app and test actual user functionalities.
 
-You can find some functions to help with rendering the app and mocking Firestore collections in the `/test/utils` folder. Here is an example of a test:
+You can find some functions to help with rendering the app and mocking Firestore collections in the `/tests/utils` folder. Here is an example of a test:
+
 ```
 import renderApp from './utils/renderApp'
 import { mockCollection } from './utils/firebaseMocks'
@@ -54,5 +62,7 @@ test('display all pets', () => {
 ```
 
 ## FAQ
+
 ### Why is the Github Action workflow not running?
+
 Make sure to "Allow all actions" in your Github Repo settings.

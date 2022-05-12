@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
 import './tests/utils/mockFirestore'
+import mockFirestore from './tests/utils/mockFirestore'
 
 // used by Material-Ui to compute media queries
 // allows you to test your components in different window sizes
@@ -12,6 +13,7 @@ import { clearCollectionMocks } from './tests/utils/mockDB'
 
 jest.mock('firebase/app')
 jest.mock('firebase/auth')
+jest.mock('firebase/firestore', () => mockFirestore)
 // jest.mock('firebaseui')
 
 afterEach(() => {
